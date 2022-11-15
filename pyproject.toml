@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "litchi_wp"
+version = "1.0.2"
+description = "Easy to manage litchi waypoints for csv"
+readme = "README.md"
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["litchi", "waypoint", "drone", "dji", "csv"]
+dependencies = [
+]
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+dev = []
+
+[project.urls]
+Homepage = "https://github.com/JoeKae/litchi-wp"
+
+[tool.bumpver]
+current_version = "1.0.2"
+version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
+commit_message = "bump version {old_version} -> {new_version}"
+commit = false
+tag = false
+push = false
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = [
+    'current_version = "{version}"',
+    'version = "{version}"'
+]
+"README.md" = [
+    "{version}",
+    "{pep440_version}",
+]
+"src/litchi_wp/__init__.py" = [
+    '^__version__ = "{version}"$'
+]
