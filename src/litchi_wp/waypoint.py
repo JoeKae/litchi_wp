@@ -195,6 +195,8 @@ class Waypoint:
                 self.actions[index].delete()
             case ActionType.ROTATE_AIRCRAFT:
                 self.actions[index].set_rotate(param)
+            case ActionType.STAY_FOR:
+                self.actions[index].set_stay_for(param)
             case ActionType.TILT_CAMERA:
                 self.actions[index].set_tilt_cam(param)
             case ActionType.TAKE_PHOTO:
