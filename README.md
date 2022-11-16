@@ -1,4 +1,4 @@
-# litchi_wp 1.0.2
+# litchi_wp 1.0.3
 
  Python package to handle litchi csv waypoints
 
@@ -12,7 +12,7 @@ wp = Waypoint(lat=-21.360244, lon=-64.85657, alt=100)  # minimal waypoint setup
 wp.set_altitude(value=100, mode=AltitudeMode.AGL)  # set altitude above ground
 wp.set_speed_ms(value=0.1)  # stop movement (0 sets cruise speed, so this is the best we can get)
 wp.set_action(index=0, actiontype=ActionType.TILT_CAMERA, param=-90)  # tilt gimbal for nadir shot
-wp.set_action(index=1, actiontype=ActionType.STAY_FOR, param=1)  # wait to stabilize
+wp.set_action(index=1, actiontype=ActionType.STAY_FOR, param=1000)  # wait 1 second to stabilize
 wp.set_action(index=2, actiontype=ActionType.TAKE_PHOTO)  # take the photo
 
 output = wp.get_header()  # first line for the waypoint file needs to be the header
