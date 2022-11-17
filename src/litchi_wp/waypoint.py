@@ -2,6 +2,7 @@
 Module for working with the litchi csv waypoints
 """
 # pylint: disable=import-error,too-many-arguments,too-many-instance-attributes
+import re
 from litchi_wp.action import Action, ActionType
 from litchi_wp.altitude import Altitude, AltitudeMode
 from litchi_wp.enums import RotationDirection
@@ -27,7 +28,28 @@ class Waypoint:
         speed (float): Speed in meters per second
         poi (Poi): Poi object
         photo (Photo): Photo object
+        _valid_line_regex (str): The regex to recognize a valid litchi waypoint csv line
     """
+    # pylint: disable=anomalous-backslash-in-string
+    _valid_line_regex: str = (
+            '^[-]?\d+(\.\d+)?,'     # latitude
+            + '\d+(\.\d+)?,'        # longitude
+            + '\d+(\.\d+)?,'        # altitude(m)
+            + '[-]?\d+(\.\d+)?,'    # heading(deg)
+            + '[-]?\d+(\.\d+)?,'    # curvesize(m)
+            + '[0-1]+,'             # rotationdir
+            + '([-1]|[0-2]),'       # gimbalmode
+            + '[-]?\d+(\.\d+)?,'    # gimbalpitchangle
+            + '((-1|[0-5]),[-]?\d+(\.\d+)?,){15}'  # actiontype, actionparam 1-15
+            + '[0-1],'              # altitudemode
+            + '\d+(\.\d+)?,'        # speed(m/s)
+            + '[-]?\d+(\.\d+)?,'    # poi_latitude
+            + '[-]?\d+(\.\d+)?,'    # poi_longitude
+            + '\d+(\.\d+)?,'        # poi_altitude(m)
+            + '[-]?[0-1],'          # poi_altitudemode
+            + '(-1|\d+(\.\d+)?),'   # photo_timeinterval
+            + '(-1|\d+(\.\d+)?)'    # photo_distinterval
+    )
 
     def __init__(
             self,
@@ -55,9 +77,10 @@ class Waypoint:
         """
         Setter for coordinates
 
-        Parameters:
-        lat (float): Latitude coordinate for the waypoint in WGS84 format
-        lon (float): Longitude coordinate for the waypoint in WGS84 format
+        Args:
+            lat (float): Latitude coordinate for the waypoint in WGS84 format
+            lon (float): Longitude coordinate for the waypoint in WGS84 format
+
         """
         self.lat = lat
         self.lon = lon
@@ -66,9 +89,10 @@ class Waypoint:
         """
         Setter for altitude
 
-        Parameters:
+        Args:
             value (float): The height in meters
             mode (AltitudeMode): The altitude mode (MSL or AGL)
+
         """
         self.altitude.set_value(value)
         self.altitude.set_mode(mode)
@@ -77,8 +101,9 @@ class Waypoint:
         """
         Setter for heading
 
-        Parameters:
+        Args:
             value (float): The heading in degrees (0 = north, 180 = south)
+
         """
         self.heading = value
 
@@ -86,8 +111,9 @@ class Waypoint:
         """
         Setter for curve size
 
-        Parameters:
+        Args:
             value (float): The curve radius in meters
+
         """
         self.curvesize = value
 
@@ -95,8 +121,9 @@ class Waypoint:
         """
         Setter for the rotation direction
 
-        Parameters:
+        Args:
             value (RotationDirection): Clockwise or Counterclockwise rotation
+
         """
         self.rotationdir = value
 
@@ -104,9 +131,10 @@ class Waypoint:
         """
         Setter for gimbal mode
 
-        Parameters:
+        Args:
             mode (GimbalMode): The mode setting for the gimbal
             pitchangle (float): The angle for the gimbal (only for interpolate mode)
+
         """
         match mode:
             case GimbalMode.DISABLED:
@@ -120,8 +148,9 @@ class Waypoint:
         """
         Setter for speed in meters per second
 
-        Parameters:
+        Args:
             value (float): The speed in meters per second
+
         """
         self.speed = value
 
@@ -129,8 +158,9 @@ class Waypoint:
         """
         Setter for speed in kilometers per hour
 
-        Parameters:
+        Args:
             value (float): The speed in kilometers per hour
+
         """
         self.speed = value / 3.6
 
@@ -144,11 +174,12 @@ class Waypoint:
         """
         Setter for point of interest
 
-        Parameters:
+        Args:
             lat (float): Latitude coordinate for the waypoint in WGS84 format
             lon (float): Longitude coordinate for the waypoint in WGS84 format
             alt (float): The altitude in meters
             alt_mode (AltitudeMode): The altitudemode, MSL or AGL
+
         """
         self.poi.set_coordinates(lat, lon)
         self.poi.set_altitude(alt)
@@ -158,8 +189,9 @@ class Waypoint:
         """
         Setter for photo time interval
 
-        Parameters:
+        Args:
             seconds (float): The time in seconds between each photo
+
         """
         self.photo.set_time_interval(seconds)
 
@@ -167,19 +199,20 @@ class Waypoint:
         """
         Setter for photo distance interval
 
-        Parameters:
+        Args:
             meters (float): The distance in meters between each photo
+
         """
         self.photo.set_distance_interval(meters)
 
-    def set_action(self, index: int, actiontype: ActionType, param: int = 0):
+    def set_action(self, index: int, actiontype: ActionType, param: int | float = 0):
         """
         Setter for actions
 
-        Parameters:
+        Args:
             index (int): Action slot (0, ... ,14)
             actiontype (ActionType): The type of the action
-            param (float): The parameter of the action. Depends on the actiontype
+            param (int | float): The parameter of the action. Depends on the actiontype
 
                 - Stay For (time in milliseconds),
                 - Rotate Aircraft (angle in degrees),
@@ -187,6 +220,7 @@ class Waypoint:
                 - Take Photo (set to 0)
                 - Start Recording (set to 0)
                 - Stop Recording (set to 0)
+
         """
         if index > 14 or index < 0:
             return
@@ -196,7 +230,7 @@ class Waypoint:
             case ActionType.ROTATE_AIRCRAFT:
                 self.actions[index].set_rotate(param)
             case ActionType.STAY_FOR:
-                self.actions[index].set_stay_for(param)
+                self.actions[index].set_stay_for(int(param))
             case ActionType.TILT_CAMERA:
                 self.actions[index].set_tilt_cam(param)
             case ActionType.TAKE_PHOTO:
@@ -207,9 +241,16 @@ class Waypoint:
                 self.actions[index].set_stop_rec()
 
     @staticmethod
-    def get_header(line_break='\n'):
+    def get_header(line_break='\n') -> str:
         """
         Getter for the waypoint file header
+
+        Args:
+            line_break (str | bool | None): Linebreak character, disable with None or False
+
+        Returns:
+            The header as a string
+
         """
         ret = 'latitude,longitude,altitude(m),heading(deg),' \
               'curvesize(m),rotationdir,gimbalmode,gimbalpitchangle,' \
@@ -228,9 +269,16 @@ class Waypoint:
             ret += line_break
         return ret
 
-    def to_line(self, line_break='\n'):
+    def to_line(self, line_break: str | bool | None = '\n') -> str:
         """
         Transforms the waypoint to a line in litchi csv format
+
+        Args:
+            line_break (str | bool | None): Linebreak character, disable with None or False
+
+        Returns:
+            The serialized waypoint in litchi csv format
+
         """
         line = ''
         line += str(self.lat) + ','
@@ -253,5 +301,97 @@ class Waypoint:
         line += str(self.photo.time_interval) + ','
         line += str(self.photo.distance_interval)
         if line_break:
-            line += line_break
+            if line_break is not True:
+                line += line_break
         return line
+
+    @staticmethod
+    def from_line(line: str) -> 'Waypoint':
+        """
+        Parses a line from a litchi waypoint csv file and returns an instance of the Waypoint
+
+        Args:
+            line (str): The litchi waypoints csv line
+
+        Returns:
+            The Waypoint as an instance
+
+        Raises:
+            ValueError (invalid_input): Line does not match regex filter
+
+        """
+        match = re.search(Waypoint._valid_line_regex, line)
+        if match:
+            rows = match.group().split(',')
+
+            def get_float(index: int):
+                return float(rows[index])
+
+            def get_int(index: int):
+                return int(get_float(index))
+
+            waypoint = Waypoint(
+                lat=get_float(0),
+                lon=get_float(1),
+                alt=get_float(2)
+            )
+            waypoint.set_heading(get_float(3))
+            waypoint.set_curvesize(get_float(4))
+            waypoint.set_rotation_direction(RotationDirection(get_int(5)))
+            waypoint.set_gimbal(
+                mode=GimbalMode(get_int(6)),
+                pitchangle=get_float(7)
+            )
+            action_index = 0
+            for i in range(8, 8 + 30, 2):
+                waypoint.set_action(
+                    index=action_index,
+                    actiontype=ActionType(get_int(i)),
+                    param=get_float(i + 1)
+                )
+                action_index += 1
+            waypoint.set_altitude(
+                get_float(2),
+                mode=AltitudeMode(get_int(38))
+            )
+            waypoint.set_speed_ms(get_float(39))
+            waypoint.set_poi(
+                lat=get_float(40),
+                lon=get_float(41),
+                alt=get_float(42),
+                alt_mode=AltitudeMode(get_int(43))
+            )
+            waypoint.photo.time_interval = get_float(44)
+            waypoint.photo.distance_interval = get_float(45)
+            return waypoint
+        raise ValueError('invalid_input')
+
+    @staticmethod
+    def from_file(filename: str) -> list['Waypoint']:
+        """
+        Creates a list of Waypoints from a litchi waypoint csv file.
+        Prints out any lines that did not match the regular expression.
+        Format: {line_number}: {line}
+
+        Args:
+            filename (str): The path + filename of the file to be parsed
+
+        Returns:
+            The list of parsed Waypoints
+        """
+        with open(filename, encoding='utf-8', mode='r') as file:
+            file_content = file.read()
+        rows = file_content.split('\n')
+        wp_list = []
+        no_ignored_lines = True
+        for row in rows:
+            try:
+                wp_list.append(
+                    Waypoint.from_line(row)
+                )
+            except ValueError:
+                if no_ignored_lines:
+                    no_ignored_lines = False
+                    print('Ignored lines:')
+                print(f"{rows.index(row)}: {row}")
+        return wp_list

@@ -12,14 +12,16 @@ class Altitude:
     Attributes:
         value (float): The height in meters
         mode (AltitudeMode): The altitude mode
+
     """
 
     def __init__(self, value: float = -1.0, mode: AltitudeMode = AltitudeMode.AGL):
         """
         Constructor
+        Args:
+            value (float): The height in meters
+            mode (AltitudeMode): The altitude mode (MSL or AGL)
 
-        value (float): The height in meters
-        mode (AltitudeMode): The altitude mode (MSL or AGL)
         """
         self.value = value
         self.mode = mode
@@ -28,8 +30,9 @@ class Altitude:
         """
         Setter for Altitudemode
 
-        Parameters:
+        Args:
             mode (AltitudeMode): The enum of Altitudemode
+
         """
         self.mode = mode
 
@@ -37,7 +40,8 @@ class Altitude:
         """
         Setter for value
 
-        Parameters:
+        Args:
             value (float): The height in meters
+
         """
         self.value = value

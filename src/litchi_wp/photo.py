@@ -10,15 +10,17 @@ class Photo:
     Attributes:
         time_interval (float): The interval between photos in seconds
         distance_interval (float): The interval between photos in meters
+
     """
 
     def __init__(self, time_interval: float = -1.0, distance_interval: float = -1.0):
         """
         Constructor
 
-        Parameters:
+        Args:
             time_interval (float): The interval between photos in seconds, disable with -1.0
             distance_interval (float): The interval between photos in meters, disable with -1.0
+
         """
         self.time_interval = time_interval
         self.distance_interval = distance_interval
@@ -27,8 +29,9 @@ class Photo:
         """
         Setter for time based interval
 
-        Parameters:
+        Args:
             interval (float): The interval between photos in seconds, disable with -1.0
+
         """
         self.time_interval = interval
         self.distance_interval = 0
@@ -37,8 +40,9 @@ class Photo:
         """
         Setter for distance based interval
 
-        Parameters:
+        Args:
             interval (float): The interval between photos in seconds, disable with -1.0
+
         """
         self.distance_interval = interval
         self.time_interval = 0
