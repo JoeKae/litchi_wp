@@ -13,7 +13,8 @@ class Poi:
         lat (float): Latitude coordinate for the waypoint in WGS84 format
         lon (float): Longitude coordinate for the waypoint in WGS84 format
         altitude (float): The altitude in meters
-        altitude_mode (int): The altitudemode
+        altitude_mode (AltitudeMode): The altitudemode
+
     """
 
     def __init__(
@@ -26,11 +27,12 @@ class Poi:
         """
         Constructor
 
-        Parameters:
+        Args:
             lat (float): Latitude coordinate for the waypoint in WGS84 format
             lon (float): Longitude coordinate for the waypoint in WGS84 format
             altitude (float): The altitude in meters
             altitude_mode (AltitudeMode): The altitudemode, MSL or AGL
+
         """
         self.lat = lat
         self.lon = lon
@@ -41,9 +43,10 @@ class Poi:
         """
         Setter for coordinates
 
-        Parameters:
+        Args:
         lat (float): Latitude coordinate for the waypoint in WGS84 format
         lon (float): Longitude coordinate for the waypoint in WGS84 format
+
         """
         self.lat = lat
         self.lon = lon
@@ -52,8 +55,9 @@ class Poi:
         """
         Setter for altitude
 
-        Parameters:
+        Args:
         altitude (float): The altitude in meters
+
         """
         self.altitude = altitude
 
@@ -61,7 +65,8 @@ class Poi:
         """
         Setter for the altitude mode
 
-        Parameters:
+        Args:
             altitude_mode (AltitudeMode): The altitudemode (MSL or AGL)
+
         """
         self.altitude_mode = altitude_mode

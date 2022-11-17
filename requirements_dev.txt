@@ -1,0 +1,5 @@
+build>=0.9.0
+bumpver>=2022.1119
+mypy>=0.991
+pylint>=2.15.5
+twine>=4.0.1

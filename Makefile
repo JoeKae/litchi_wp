@@ -1,17 +1,23 @@
+major:
+	python -m bumpver update --major
+
+minor:
+	python -m bumpver update --minor
+
 patch:
 	python -m bumpver update --patch
 
 docs:
-	python -m pdoc ./src/litchi_wp/action.py -o ./docs
-	python -m pdoc ./src/litchi_wp/altitude.py -o ./docs
-	python -m pdoc ./src/litchi_wp/enums.py -o ./docs
-	python -m pdoc ./src/litchi_wp/gimbal.py -o ./docs
-	python -m pdoc ./src/litchi_wp/photo.py -o ./docs
-	python -m pdoc ./src/litchi_wp/poi.py -o ./docs
-	python -m pdoc ./src/litchi_wp/waypoint.py -o ./docs
+	python -m pdoc --docformat google ./src/litchi_wp/action.py -o ./docs
+	python -m pdoc --docformat google ./src/litchi_wp/altitude.py -o ./docs
+	python -m pdoc --docformat google ./src/litchi_wp/enums.py -o ./docs
+	python -m pdoc --docformat google ./src/litchi_wp/gimbal.py -o ./docs
+	python -m pdoc --docformat google ./src/litchi_wp/photo.py -o ./docs
+	python -m pdoc --docformat google ./src/litchi_wp/poi.py -o ./docs
+	python -m pdoc --docformat google ./src/litchi_wp/waypoint.py -o ./docs
 
 build:
-	rm dist/*
+	rm -f dist/*
 	python -m build
 
 publish-test: docs build

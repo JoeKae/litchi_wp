@@ -12,14 +12,17 @@ class Gimbal:
     Attributes:
             mode (GimbalMode): The mode for the gimbal setting
             pitchangle (int): The gimbal angle in degrees
+
     """
 
     def __init__(self, mode: GimbalMode = GimbalMode.DISABLED, pitchangle: float = 0):
         """
         Constructor
 
+        Args:
             mode (GimbalMode): The mode for the gimbal (disabled, focus poi or interpolate)
             pitchangle (float): The gimbal angle in degrees
+
         """
         self.mode = mode
         self.pitchangle = pitchangle
@@ -41,8 +44,9 @@ class Gimbal:
         """
         Setter for mode
 
-        Parameters:
+        Args:
             mode (float): The mode for the gimbal (disabled, focus poi or interpolate)
+
         """
         self.mode = mode
 
@@ -50,7 +54,8 @@ class Gimbal:
         """
         Setter for pitchangle
 
-        Parameters:
+        Args:
             pitchangle (float): The gimbal angle in degrees
+
         """
         self.pitchangle = pitchangle

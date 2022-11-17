@@ -11,18 +11,19 @@ class Action:
 
     Attributes:
         type (ActionType): The type of the action
-        param (int): The parameter of the action. Depends on the actiontype
+        param (int | float): The parameter of the action. Depends on the actiontype
+
     """
 
     def __init__(
             self,
             actiontype: ActionType = ActionType.NO_ACTION,
-            param: int = 0
+            param: int | float = 0
     ):
         """
         Constructor
 
-        Parameters:
+        Args:
             actiontype (ActionType): The type of the action
             param (float): The parameter of the action. Depends on the actiontype
 
@@ -32,6 +33,7 @@ class Action:
                 - Take Photo (set to 0)
                 - Start Recording (set to 0)
                 - Stop Recording (set to 0)
+
         """
         self.type: ActionType = actiontype
         self.param = param
@@ -40,21 +42,23 @@ class Action:
         """
         Setter for the type of the action
 
-        Parameters:
+        Args:
             actiontype (Actiontype): The type of the action
+
         """
         self.type = actiontype.value
 
-    def set_param(self, param: int):
+    def set_param(self, param: int | float):
         """
         Setter for the action parameter
 
-        Parameters:
-            param (int): The parameter of the action. Depends on the actiontype
+        Args:
+            param (int | float): The parameter of the action. Depends on the actiontype
 
                 - Stay For (time in milliseconds),
                 - Rotate Aircraft (angle in degrees),
                 - Tilt Camera (angle in degrees)
+
         """
         self.param = param
 
@@ -69,8 +73,9 @@ class Action:
         """
         Setter for 'Stay For' action
 
-        Parameters:
+        Args:
             msec (int): Time to stay in milliseconds
+
         """
         self.type = ActionType.STAY_FOR
         self.param = msec
@@ -96,22 +101,24 @@ class Action:
         self.type = ActionType.STOP_RECORDING
         self.param = 0
 
-    def set_rotate(self, deg: int):
+    def set_rotate(self, deg: int | float):
         """
         Setter for 'Rotate Aircraft' action
 
-        Parameters:
-            deg (int): Rotation in degrees
+        Args:
+            deg (int | float): Rotation in degrees
+
         """
         self.type = ActionType.ROTATE_AIRCRAFT
         self.param = deg
 
-    def set_tilt_cam(self, deg: int):
+    def set_tilt_cam(self, deg: int | float):
         """
         Setter for 'Tilt Camera' action
 
-        Parameters:
-            deg (int): Tiltangle in degrees
+        Args:
+            deg (int | float): Tiltangle in degrees
+
         """
         self.type = ActionType.TILT_CAMERA
         self.param = deg
