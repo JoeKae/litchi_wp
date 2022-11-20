@@ -33,7 +33,7 @@ class Waypoint:
     # pylint: disable=anomalous-backslash-in-string
     _valid_line_regex: str = (
             '^[-]?\d+(\.\d+)?,'     # latitude
-            + '\d+(\.\d+)?,'        # longitude
+            + '[-]?\d+(\.\d+)?,'        # longitude
             + '\d+(\.\d+)?,'        # altitude(m)
             + '[-]?\d+(\.\d+)?,'    # heading(deg)
             + '[-]?\d+(\.\d+)?,'    # curvesize(m)
@@ -47,8 +47,8 @@ class Waypoint:
             + '[-]?\d+(\.\d+)?,'    # poi_longitude
             + '\d+(\.\d+)?,'        # poi_altitude(m)
             + '[-]?[0-1],'          # poi_altitudemode
-            + '(-1|\d+(\.\d+)?),'   # photo_timeinterval
-            + '(-1|\d+(\.\d+)?)'    # photo_distinterval
+            + '((-1|\d+)(\.\d+)?),'   # photo_timeinterval
+            + '((-1|\d+)(\.\d+)?)'    # photo_distinterval
     )
 
     def __init__(
