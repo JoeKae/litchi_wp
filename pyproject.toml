@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "litchi_wp"
-version = "1.1.0"
+version = "1.1.1"
 description = "Easy to manage litchi waypoints for csv"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -27,7 +27,7 @@ GitHub = "https://github.com/JoeKae/litchi-wp"
 Changelog = "https://github.com/JoeKae/litchi_wp/blob/main/CHANGELOG.md"
 
 [tool.bumpver]
-current_version = "1.1.0"
+current_version = "1.1.1"
 version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
 commit_message = "bump version {old_version} -> {new_version}"
 commit = false

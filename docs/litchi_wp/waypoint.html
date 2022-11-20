@@ -138,7 +138,7 @@ litchi_wp<wbr>.waypoint    </h1>
 </span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>    <span class="c1"># pylint: disable=anomalous-backslash-in-string</span>
 </span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>    <span class="n">_valid_line_regex</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="p">(</span>
 </span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>            <span class="s1">&#39;^[-]?\d+(\.\d+)?,&#39;</span>     <span class="c1"># latitude</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>            <span class="o">+</span> <span class="s1">&#39;\d+(\.\d+)?,&#39;</span>        <span class="c1"># longitude</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>            <span class="o">+</span> <span class="s1">&#39;[-]?\d+(\.\d+)?,&#39;</span>    <span class="c1"># longitude</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>            <span class="o">+</span> <span class="s1">&#39;\d+(\.\d+)?,&#39;</span>        <span class="c1"># altitude(m)</span>
 </span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>            <span class="o">+</span> <span class="s1">&#39;[-]?\d+(\.\d+)?,&#39;</span>    <span class="c1"># heading(deg)</span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>            <span class="o">+</span> <span class="s1">&#39;[-]?\d+(\.\d+)?,&#39;</span>    <span class="c1"># curvesize(m)</span>
@@ -152,8 +152,8 @@ litchi_wp<wbr>.waypoint    </h1>
 </span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>            <span class="o">+</span> <span class="s1">&#39;[-]?\d+(\.\d+)?,&#39;</span>    <span class="c1"># poi_longitude</span>
 </span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>            <span class="o">+</span> <span class="s1">&#39;\d+(\.\d+)?,&#39;</span>        <span class="c1"># poi_altitude(m)</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>            <span class="o">+</span> <span class="s1">&#39;[-]?[0-1],&#39;</span>          <span class="c1"># poi_altitudemode</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>            <span class="o">+</span> <span class="s1">&#39;(-1|\d+(\.\d+)?),&#39;</span>   <span class="c1"># photo_timeinterval</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>            <span class="o">+</span> <span class="s1">&#39;(-1|\d+(\.\d+)?)&#39;</span>    <span class="c1"># photo_distinterval</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>            <span class="o">+</span> <span class="s1">&#39;((-1|\d+)(\.\d+)?),&#39;</span>   <span class="c1"># photo_timeinterval</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>            <span class="o">+</span> <span class="s1">&#39;((-1|\d+)(\.\d+)?)&#39;</span>    <span class="c1"># photo_distinterval</span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>    <span class="p">)</span>
 </span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>
 </span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -537,7 +537,7 @@ litchi_wp<wbr>.waypoint    </h1>
 </span><span id="Waypoint-34"><a href="#Waypoint-34"><span class="linenos"> 34</span></a>    <span class="c1"># pylint: disable=anomalous-backslash-in-string</span>
 </span><span id="Waypoint-35"><a href="#Waypoint-35"><span class="linenos"> 35</span></a>    <span class="n">_valid_line_regex</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="p">(</span>
 </span><span id="Waypoint-36"><a href="#Waypoint-36"><span class="linenos"> 36</span></a>            <span class="s1">&#39;^[-]?\d+(\.\d+)?,&#39;</span>     <span class="c1"># latitude</span>
-</span><span id="Waypoint-37"><a href="#Waypoint-37"><span class="linenos"> 37</span></a>            <span class="o">+</span> <span class="s1">&#39;\d+(\.\d+)?,&#39;</span>        <span class="c1"># longitude</span>
+</span><span id="Waypoint-37"><a href="#Waypoint-37"><span class="linenos"> 37</span></a>            <span class="o">+</span> <span class="s1">&#39;[-]?\d+(\.\d+)?,&#39;</span>    <span class="c1"># longitude</span>
 </span><span id="Waypoint-38"><a href="#Waypoint-38"><span class="linenos"> 38</span></a>            <span class="o">+</span> <span class="s1">&#39;\d+(\.\d+)?,&#39;</span>        <span class="c1"># altitude(m)</span>
 </span><span id="Waypoint-39"><a href="#Waypoint-39"><span class="linenos"> 39</span></a>            <span class="o">+</span> <span class="s1">&#39;[-]?\d+(\.\d+)?,&#39;</span>    <span class="c1"># heading(deg)</span>
 </span><span id="Waypoint-40"><a href="#Waypoint-40"><span class="linenos"> 40</span></a>            <span class="o">+</span> <span class="s1">&#39;[-]?\d+(\.\d+)?,&#39;</span>    <span class="c1"># curvesize(m)</span>
@@ -551,8 +551,8 @@ litchi_wp<wbr>.waypoint    </h1>
 </span><span id="Waypoint-48"><a href="#Waypoint-48"><span class="linenos"> 48</span></a>            <span class="o">+</span> <span class="s1">&#39;[-]?\d+(\.\d+)?,&#39;</span>    <span class="c1"># poi_longitude</span>
 </span><span id="Waypoint-49"><a href="#Waypoint-49"><span class="linenos"> 49</span></a>            <span class="o">+</span> <span class="s1">&#39;\d+(\.\d+)?,&#39;</span>        <span class="c1"># poi_altitude(m)</span>
 </span><span id="Waypoint-50"><a href="#Waypoint-50"><span class="linenos"> 50</span></a>            <span class="o">+</span> <span class="s1">&#39;[-]?[0-1],&#39;</span>          <span class="c1"># poi_altitudemode</span>
-</span><span id="Waypoint-51"><a href="#Waypoint-51"><span class="linenos"> 51</span></a>            <span class="o">+</span> <span class="s1">&#39;(-1|\d+(\.\d+)?),&#39;</span>   <span class="c1"># photo_timeinterval</span>
-</span><span id="Waypoint-52"><a href="#Waypoint-52"><span class="linenos"> 52</span></a>            <span class="o">+</span> <span class="s1">&#39;(-1|\d+(\.\d+)?)&#39;</span>    <span class="c1"># photo_distinterval</span>
+</span><span id="Waypoint-51"><a href="#Waypoint-51"><span class="linenos"> 51</span></a>            <span class="o">+</span> <span class="s1">&#39;((-1|\d+)(\.\d+)?),&#39;</span>   <span class="c1"># photo_timeinterval</span>
+</span><span id="Waypoint-52"><a href="#Waypoint-52"><span class="linenos"> 52</span></a>            <span class="o">+</span> <span class="s1">&#39;((-1|\d+)(\.\d+)?)&#39;</span>    <span class="c1"># photo_distinterval</span>
 </span><span id="Waypoint-53"><a href="#Waypoint-53"><span class="linenos"> 53</span></a>    <span class="p">)</span>
 </span><span id="Waypoint-54"><a href="#Waypoint-54"><span class="linenos"> 54</span></a>
 </span><span id="Waypoint-55"><a href="#Waypoint-55"><span class="linenos"> 55</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>

@@ -33,7 +33,7 @@ class Waypoint:
     # pylint: disable=anomalous-backslash-in-string
     _valid_line_regex: str = (
             '^[-]?\d+(\.\d+)?,'     # latitude
-            + '[-]?\d+(\.\d+)?,'        # longitude
+            + '[-]?\d+(\.\d+)?,'    # longitude
             + '\d+(\.\d+)?,'        # altitude(m)
             + '[-]?\d+(\.\d+)?,'    # heading(deg)
             + '[-]?\d+(\.\d+)?,'    # curvesize(m)

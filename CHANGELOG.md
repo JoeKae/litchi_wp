@@ -1,5 +1,18 @@
 
 # Change Log
+
+## [1.1.1] - 2022-11-17
+ 
+### Migration
+#### 1.1.0 -> 1.1.1
+- No changes needed.
+ 
+### Fixed
+
+- Regex filter errors
+  - did not allow negative latitude
+  - did not allow some photo interval values
+ 
  
 ## [1.1.0] - 2022-11-17
  
