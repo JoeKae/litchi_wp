@@ -1,7 +1,33 @@
 
 # Change Log
 
-## [1.1.1] - 2022-11-17
+## [2.0.0] - 2022-11-20
+ 
+### Migration
+#### 1.x.x -> 2.0.0
+- waypoint.set_action changed
+  - old: waypoint.set_action(index=x, actiontype=y, param=z)
+  - new: waypoint.set_action(action_type=y, param=z)
+- to set specific action index use
+  - waypoint.replace_action(index=x, action_type=y, param=z)
+ 
+### Added
+
+#### Waypoint
+
+- internal action index handling
+  - waypoint.set_action returns False if all action slots are full
+ 
+### Changed
+ 
+#### Waypoint
+
+- waypoint.set_action parameter actiontype changed to action_type
+  - old: waypoint.set_action(index=x, actiontype=y, param=z)
+  - new: waypoint.set_action(action_type=y, param=z)
+
+
+## [1.1.1] - 2022-11-20
  
 ### Migration
 #### 1.1.0 -> 1.1.1
