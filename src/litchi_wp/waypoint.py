@@ -29,6 +29,7 @@ class Waypoint:
         poi (Poi): Poi object
         photo (Photo): Photo object
         _valid_line_regex (str): The regex to recognize a valid litchi waypoint csv line
+        next_action_index (int): The index of the next free action slot (max 14)
     """
     # pylint: disable=anomalous-backslash-in-string
     _valid_line_regex: str = (
@@ -50,6 +51,7 @@ class Waypoint:
             + '((-1|\d+)(\.\d+)?),'   # photo_timeinterval
             + '((-1|\d+)(\.\d+)?)'    # photo_distinterval
     )
+    next_action_index = 0
 
     def __init__(
             self,
@@ -205,13 +207,13 @@ class Waypoint:
         """
         self.photo.set_distance_interval(meters)
 
-    def set_action(self, index: int, actiontype: ActionType, param: int | float = 0):
+    def replace_action(self, index: int, action_type: ActionType, param: int | float = 0):
         """
-        Setter for actions
+        Replaces actions at index
 
         Args:
             index (int): Action slot (0, ... ,14)
-            actiontype (ActionType): The type of the action
+            action_type (ActionType): The type of the action
             param (int | float): The parameter of the action. Depends on the actiontype
 
                 - Stay For (time in milliseconds),
@@ -224,7 +226,7 @@ class Waypoint:
         """
         if index > 14 or index < 0:
             return
-        match actiontype:
+        match action_type:
             case ActionType.NO_ACTION:
                 self.actions[index].delete()
             case ActionType.ROTATE_AIRCRAFT:
@@ -239,6 +241,35 @@ class Waypoint:
                 self.actions[index].set_start_rec()
             case ActionType.STOP_RECORDING:
                 self.actions[index].set_stop_rec()
+
+    def set_action(self, action_type: ActionType, param: int | float = 0) -> bool:
+        """
+        Setter for actions
+
+        Args:
+            action_type (ActionType): The type of the action
+            param (int | float): The parameter of the action. Depends on the actiontype
+
+                - Stay For (time in milliseconds),
+                - Rotate Aircraft (angle in degrees),
+                - Tilt Camera (angle in degrees)
+                - Take Photo (set to 0)
+                - Start Recording (set to 0)
+                - Stop Recording (set to 0)
+
+        Returns:
+            True if action is set, False if no action slots are available
+
+        """
+        if self.next_action_index > 14:
+            return False
+        self.replace_action(
+            index=self.next_action_index,
+            action_type=action_type,
+            param=param
+        )
+        self.next_action_index += 1
+        return True
 
     @staticmethod
     def get_header(line_break='\n') -> str:
@@ -344,9 +375,9 @@ class Waypoint:
             )
             action_index = 0
             for i in range(8, 8 + 30, 2):
-                waypoint.set_action(
+                waypoint.replace_action(
                     index=action_index,
-                    actiontype=ActionType(get_int(i)),
+                    action_type=ActionType(get_int(i)),
                     param=get_float(i + 1)
                 )
                 action_index += 1
