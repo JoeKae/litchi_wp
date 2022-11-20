@@ -1,4 +1,4 @@
-# litchi_wp 1.1.0
+# litchi_wp 1.1.1
 
  Python package to handle litchi csv waypoints
 
