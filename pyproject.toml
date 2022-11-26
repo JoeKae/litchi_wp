@@ -2,9 +2,12 @@
 requires = ["setuptools>=61.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.package-data]
+litchi_wp = ["*.pyi", "py.typed"]
+
 [project]
 name = "litchi_wp"
-version = "2.0.0"
+version = "2.1.0"
 description = "Easy to manage litchi waypoints for csv"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -27,7 +30,7 @@ GitHub = "https://github.com/JoeKae/litchi-wp"
 Changelog = "https://github.com/JoeKae/litchi_wp/blob/main/CHANGELOG.md"
 
 [tool.bumpver]
-current_version = "2.0.0"
+current_version = "2.1.0"
 version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
 commit_message = "bump version {old_version} -> {new_version}"
 commit = false

@@ -356,7 +356,7 @@ litchi_wp<wbr>.action    </h1>
                                         <input id="Action.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
-        <span class="name">Action</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">actiontype</span><span class="p">:</span> <span class="n">litchi_wp</span><span class="o">.</span><span class="n">enums</span><span class="o">.</span><span class="n">ActionType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">ActionType</span><span class="o">.</span><span class="n">NO_ACTION</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span>,</span><span class="param">	<span class="n">param</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span></span>)</span>
+        <span class="name">Action</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">actiontype</span><span class="p">:</span> <span class="n">litchi_wp</span><span class="o">.</span><span class="n">enums</span><span class="o">.</span><span class="n">ActionType</span> <span class="o">=</span> <span class="bp">Ellipsis</span>,</span><span class="param">	<span class="n">param</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="bp">Ellipsis</span></span>)</span>
 
                 <label class="view-source-button" for="Action.__init__-view-source"><span>View Source</span></label>
 
@@ -447,7 +447,7 @@ litchi_wp<wbr>.action    </h1>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">set_param</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">param</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span></span><span class="return-annotation">):</span></span>
+        <span class="name">set_param</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">param</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span></span><span class="return-annotation">):</span></span>
 
                 <label class="view-source-button" for="Action.set_param-view-source"><span>View Source</span></label>
 
@@ -491,7 +491,7 @@ litchi_wp<wbr>.action    </h1>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">delete</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+        <span class="name">delete</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="Action.delete-view-source"><span>View Source</span></label>
 
@@ -551,7 +551,7 @@ litchi_wp<wbr>.action    </h1>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">set_take_photo</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+        <span class="name">set_take_photo</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="Action.set_take_photo-view-source"><span>View Source</span></label>
 
@@ -576,7 +576,7 @@ litchi_wp<wbr>.action    </h1>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">set_start_rec</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+        <span class="name">set_start_rec</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="Action.set_start_rec-view-source"><span>View Source</span></label>
 
@@ -601,7 +601,7 @@ litchi_wp<wbr>.action    </h1>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">set_stop_rec</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">):</span></span>
+        <span class="name">set_stop_rec</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="Action.set_stop_rec-view-source"><span>View Source</span></label>
 
@@ -626,7 +626,7 @@ litchi_wp<wbr>.action    </h1>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">set_rotate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span></span><span class="return-annotation">):</span></span>
+        <span class="name">set_rotate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">deg</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span></span><span class="return-annotation">):</span></span>
 
                 <label class="view-source-button" for="Action.set_rotate-view-source"><span>View Source</span></label>
 
@@ -661,7 +661,7 @@ litchi_wp<wbr>.action    </h1>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">set_tilt_cam</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span></span><span class="return-annotation">):</span></span>
+        <span class="name">set_tilt_cam</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">deg</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span></span><span class="return-annotation">):</span></span>
 
                 <label class="view-source-button" for="Action.set_tilt_cam-view-source"><span>View Source</span></label>
 

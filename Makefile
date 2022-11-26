@@ -1,3 +1,17 @@
+ifeq ($(OS),Windows_NT)
+    RM = del /Q /F
+    RRM = rmdir /Q /S
+else
+    RM = rm -f
+    RRM = rm -f -r
+endif
+
+stubs-test:
+	stubtest litchi_wp
+
+stubs:
+	stubgen src/litchi_wp -o src
+
 major:
 	python -m bumpver update --major
 
@@ -17,7 +31,7 @@ docs:
 	python -m pdoc --docformat google ./src/litchi_wp/waypoint.py -o ./docs
 
 build:
-	rm -f dist/*
+	$(RRM) dist
 	python -m build
 
 publish-test: docs build

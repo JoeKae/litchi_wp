@@ -45,7 +45,7 @@ class Gimbal:
         Setter for mode
 
         Args:
-            mode (float): The mode for the gimbal (disabled, focus poi or interpolate)
+            mode (GimbalMode): The mode for the gimbal (disabled, focus poi or interpolate)
 
         """
         self.mode = mode

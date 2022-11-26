@@ -1,5 +1,12 @@
+## [2.1.0] - 2022-11-26
+ 
+### Migration
+#### 2.0.0 -> 2.1.0
+- No changes needed.
+ 
+### Added
+- typing stubs
 
-# Change Log
 
 ## [2.0.0] - 2022-11-20
  
