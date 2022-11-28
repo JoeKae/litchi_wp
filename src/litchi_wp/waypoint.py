@@ -5,7 +5,7 @@ Module for working with the litchi csv waypoints
 import re
 from litchi_wp.action import Action, ActionType
 from litchi_wp.altitude import Altitude, AltitudeMode
-from litchi_wp.enums import RotationDirection
+from litchi_wp.enums import RotationDirection, RegEx
 from litchi_wp.gimbal import Gimbal, GimbalMode
 from litchi_wp.photo import Photo
 from litchi_wp.poi import Poi
@@ -18,7 +18,7 @@ class Waypoint:
     Attributes:
         lat (float): Latitude coordinate for the waypoint in WGS84 format
         lon (float): Longitude coordinate for the waypoint in WGS84 format
-        altitude (float): Altitude in meters
+        altitude (Altitude): Altitude object
         heading (float): Heading in degrees
         curvesize (float): Curvesize (radius?) in meter
         rotationdir (RotationDirection):
@@ -28,29 +28,13 @@ class Waypoint:
         speed (float): Speed in meters per second
         poi (Poi): Poi object
         photo (Photo): Photo object
-        _valid_line_regex (str): The regex to recognize a valid litchi waypoint csv line
         next_action_index (int): The index of the next free action slot (max 14)
+
+        Raises:
+            ValueError: If [lat, lon, alt, head, curve, speed] cannot be float
+                        or rot is no valid RotationDirection
+
     """
-    # pylint: disable=anomalous-backslash-in-string
-    _valid_line_regex: str = (
-            '^[-]?\d+(\.\d+)?,'     # latitude
-            + '[-]?\d+(\.\d+)?,'    # longitude
-            + '\d+(\.\d+)?,'        # altitude(m)
-            + '[-]?\d+(\.\d+)?,'    # heading(deg)
-            + '[-]?\d+(\.\d+)?,'    # curvesize(m)
-            + '[0-1]+,'             # rotationdir
-            + '([-1]|[0-2]),'       # gimbalmode
-            + '[-]?\d+(\.\d+)?,'    # gimbalpitchangle
-            + '((-1|[0-5]),[-]?\d+(\.\d+)?,){15}'  # actiontype, actionparam 1-15
-            + '[0-1],'              # altitudemode
-            + '\d+(\.\d+)?,'        # speed(m/s)
-            + '[-]?\d+(\.\d+)?,'    # poi_latitude
-            + '[-]?\d+(\.\d+)?,'    # poi_longitude
-            + '\d+(\.\d+)?,'        # poi_altitude(m)
-            + '[-]?[0-1],'          # poi_altitudemode
-            + '((-1|\d+)(\.\d+)?),'   # photo_timeinterval
-            + '((-1|\d+)(\.\d+)?)'    # photo_distinterval
-    )
     next_action_index = 0
 
     def __init__(
@@ -63,15 +47,15 @@ class Waypoint:
             rot: RotationDirection = RotationDirection.CW,
             speed: float = 0,
     ):
-        self.lat = lat
-        self.lon = lon
+        self.lat = float(lat)
+        self.lon = float(lon)
         self.altitude = Altitude(value=alt)
-        self.heading = head
-        self.curvesize = curve
-        self.rotationdir = rot
+        self.heading = float(head)
+        self.curvesize = float(curve)
+        self.rotationdir = RotationDirection(rot)
         self.gimbal = Gimbal()
         self.actions = [Action() for i in range(0, 15)]
-        self.speed = speed
+        self.speed = float(speed)
         self.poi = Poi()
         self.photo = Photo()
 
@@ -83,9 +67,12 @@ class Waypoint:
             lat (float): Latitude coordinate for the waypoint in WGS84 format
             lon (float): Longitude coordinate for the waypoint in WGS84 format
 
+        Raises:
+            ValueError: If lat cannot be float or lon cannot be float
+
         """
-        self.lat = lat
-        self.lon = lon
+        self.lat = float(lat)
+        self.lon = float(lon)
 
     def set_altitude(self, value: float, mode: AltitudeMode = AltitudeMode.AGL):
         """
@@ -95,9 +82,12 @@ class Waypoint:
             value (float): The height in meters
             mode (AltitudeMode): The altitude mode (MSL or AGL)
 
+        Raises:
+            ValueError: If value cannot be float or mode is no valid AltitudeMode
+
         """
-        self.altitude.set_value(value)
-        self.altitude.set_mode(mode)
+        self.altitude.set_value(float(value))
+        self.altitude.set_mode(AltitudeMode(mode))
 
     def set_heading(self, value: float):
         """
@@ -106,8 +96,11 @@ class Waypoint:
         Args:
             value (float): The heading in degrees (0 = north, 180 = south)
 
+        Raises:
+            ValueError: If value cannot be float
+
         """
-        self.heading = value
+        self.heading = float(value)
 
     def set_curvesize(self, value: float):
         """
@@ -116,8 +109,11 @@ class Waypoint:
         Args:
             value (float): The curve radius in meters
 
+        Raises:
+            ValueError: If value cannot be float
+
         """
-        self.curvesize = value
+        self.curvesize = abs(float(value))
 
     def set_rotation_direction(self, value: RotationDirection = RotationDirection.CW):
         """
@@ -126,8 +122,11 @@ class Waypoint:
         Args:
             value (RotationDirection): Clockwise or Counterclockwise rotation
 
+        Raises:
+            ValueError: If value is not a valid RotationDirection
+
         """
-        self.rotationdir = value
+        self.rotationdir = RotationDirection(value)
 
     def set_gimbal(self, mode: GimbalMode, pitchangle: float = 0):
         """
@@ -137,8 +136,12 @@ class Waypoint:
             mode (GimbalMode): The mode setting for the gimbal
             pitchangle (float): The angle for the gimbal (only for interpolate mode)
 
+        Raises:
+            ValueError: If mode is no valid GimbalMode. Or mode is GimbalMode.Interpolate and
+                        (pitchangle cannot be float or pitchangle < -90 or pitchangle > 30)
+
         """
-        match mode:
+        match GimbalMode(mode):
             case GimbalMode.DISABLED:
                 self.gimbal.set_mode(GimbalMode.DISABLED)
             case GimbalMode.FOCUS_POI:
@@ -153,8 +156,11 @@ class Waypoint:
         Args:
             value (float): The speed in meters per second
 
+        Raises:
+            ValueError: If value cannot be float
+
         """
-        self.speed = value
+        self.speed = float(value)
 
     def set_speed_kmh(self, value: float):
         """
@@ -163,8 +169,11 @@ class Waypoint:
         Args:
             value (float): The speed in kilometers per hour
 
+        Raises:
+            ValueError: If value cannot be float
+
         """
-        self.speed = value / 3.6
+        self.speed = float(value) / 3.6
 
     def set_poi(
             self,
@@ -175,17 +184,19 @@ class Waypoint:
     ):
         """
         Setter for point of interest
-
         Args:
             lat (float): Latitude coordinate for the waypoint in WGS84 format
             lon (float): Longitude coordinate for the waypoint in WGS84 format
             alt (float): The altitude in meters
             alt_mode (AltitudeMode): The altitudemode, MSL or AGL
 
+        Raises:
+            ValueError: If [lat, lon, alt] cannot be float or alt_mode is no valid AltitudeMode
+
         """
-        self.poi.set_coordinates(lat, lon)
-        self.poi.set_altitude(alt)
-        self.poi.set_altitude_mode(alt_mode)
+        self.poi.set_coordinates(float(lat), float(lon))
+        self.poi.set_altitude(float(alt))
+        self.poi.set_altitude_mode(AltitudeMode(alt_mode))
 
     def set_photo_interval_time(self, seconds: float):
         """
@@ -194,8 +205,11 @@ class Waypoint:
         Args:
             seconds (float): The time in seconds between each photo
 
+        Raises:
+            ValueError: If seconds cannot be float
+
         """
-        self.photo.set_time_interval(seconds)
+        self.photo.set_time_interval(float(seconds))
 
     def set_photo_interval_distance(self, meters: float):
         """
@@ -204,8 +218,11 @@ class Waypoint:
         Args:
             meters (float): The distance in meters between each photo
 
+        Raises:
+            ValueError: If meters cannot be float
+
         """
-        self.photo.set_distance_interval(meters)
+        self.photo.set_distance_interval(float(meters))
 
     def replace_action(self, index: int, action_type: ActionType, param: int | float = 0):
         """
@@ -223,10 +240,15 @@ class Waypoint:
                 - Start Recording (set to 0)
                 - Stop Recording (set to 0)
 
+        Raises:
+            IndexError: If index < 0 or index > 14
+            ValueError: If index cannot be int or param cannot be float
+                        or action_type is not valid ActionType
+
         """
-        if index > 14 or index < 0:
-            return
-        match action_type:
+        if int(index) > 14 or int(index) < 0:
+            raise IndexError(f"Index {index} is out of bounds (0 ... 14)")
+        match ActionType(action_type):
             case ActionType.NO_ACTION:
                 self.actions[index].delete()
             case ActionType.ROTATE_AIRCRAFT:
@@ -242,7 +264,7 @@ class Waypoint:
             case ActionType.STOP_RECORDING:
                 self.actions[index].set_stop_rec()
 
-    def set_action(self, action_type: ActionType, param: int | float = 0) -> bool:
+    def set_action(self, action_type: ActionType, param: int | float = 0) -> int:
         """
         Setter for actions
 
@@ -258,18 +280,22 @@ class Waypoint:
                 - Stop Recording (set to 0)
 
         Returns:
-            True if action is set, False if no action slots are available
+            The index of the action or -1 if no action slots are available
+
+        Raises:
+            ValueError: If action_type is no valid ActionType or param cannot be float
 
         """
-        if self.next_action_index > 14:
-            return False
-        self.replace_action(
-            index=self.next_action_index,
-            action_type=action_type,
-            param=param
-        )
-        self.next_action_index += 1
-        return True
+        ret = -1
+        if self.next_action_index <= 14:
+            self.replace_action(
+                index=self.next_action_index,
+                action_type=ActionType(action_type),
+                param=float(param)
+            )
+            ret = self.next_action_index
+            self.next_action_index += 1
+        return ret
 
     @staticmethod
     def get_header(line_break='\n') -> str:
@@ -327,8 +353,8 @@ class Waypoint:
         line += str(self.speed) + ','
         line += str(self.poi.lat) + ','
         line += str(self.poi.lon) + ','
-        line += str(self.poi.altitude) + ','
-        line += str(self.poi.altitude_mode.value) + ','
+        line += str(self.poi.altitude.value) + ','
+        line += str(self.poi.altitude.mode.value) + ','
         line += str(self.photo.time_interval) + ','
         line += str(self.photo.distance_interval)
         if line_break:
@@ -348,10 +374,10 @@ class Waypoint:
             The Waypoint as an instance
 
         Raises:
-            ValueError (invalid_input): Line does not match regex filter
+            ValueError: If line does not match regex filter
 
         """
-        match = re.search(Waypoint._valid_line_regex, line)
+        match = re.search(RegEx.VALID_LITCHI_WP_LINE.value, line)
         if match:
             rows = match.group().split(',')
 
@@ -409,6 +435,7 @@ class Waypoint:
 
         Returns:
             The list of parsed Waypoints
+
         """
         with open(filename, encoding='utf-8', mode='r') as file:
             file_content = file.read()

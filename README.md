@@ -1,4 +1,4 @@
-# litchi_wp 2.1.0
+# litchi_wp 3.0.0
 
  Python package to handle litchi csv waypoints
 
@@ -39,10 +39,10 @@ Now waypoints contains a list of all the waypoint objects created from parsing t
 
 ## See the docs for all the options:
 
-- [Waypoint](https://htmlpreview.github.io/?https://raw.githubusercontent.com/JoeKae/litchi_wp/main/docs/litchi_wp/waypoint.html)
-- [Action](https://htmlpreview.github.io/?https://raw.githubusercontent.com/JoeKae/litchi_wp/main/docs/litchi_wp/action.html)
-- [Altitude](https://htmlpreview.github.io/?https://raw.githubusercontent.com/JoeKae/litchi_wp/main/docs/litchi_wp/altitude.html)
-- [Enums](https://htmlpreview.github.io/?https://raw.githubusercontent.com/JoeKae/litchi_wp/main/docs/litchi_wp/enums.html)
-- [Gimbal](https://htmlpreview.github.io/?https://raw.githubusercontent.com/JoeKae/litchi_wp/main/docs/litchi_wp/gimbal.html)
-- [Photo](https://htmlpreview.github.io/?https://raw.githubusercontent.com/JoeKae/litchi_wp/main/docs/litchi_wp/photo.html)
-- [Poi](https://htmlpreview.github.io/?https://raw.githubusercontent.com/JoeKae/litchi_wp/main/docs/litchi_wp/waypoint.html)
+- [Waypoint](https://joekae.github.io/litchi_wp/litchi_wp/waypoint.html)
+- [Action](https://joekae.github.io/litchi_wp/litchi_wp/action.html)
+- [Altitude](https://joekae.github.io/litchi_wp/litchi_wp/altitude.html)
+- [Enums](https://joekae.github.io/litchi_wp/litchi_wp/enums.html)
+- [Gimbal](https://joekae.github.io/litchi_wp/litchi_wp/gimbal.html)
+- [Photo](https://joekae.github.io/litchi_wp/litchi_wp/photo.html)
+- [Poi](https://joekae.github.io/litchi_wp/litchi_wp/waypoint.html)

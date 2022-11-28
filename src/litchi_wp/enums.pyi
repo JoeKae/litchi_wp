@@ -1,5 +1,7 @@
 from enum import Enum
 
+class RegEx(Enum):
+    VALID_LITCHI_WP_LINE: str
 class RotationDirection(Enum):
     CW: int
     CCW: int

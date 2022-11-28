@@ -34,9 +34,12 @@ class Action:
                 - Start Recording (set to 0)
                 - Stop Recording (set to 0)
 
+        Raises:
+            ValueError: If actiontype is no valid ActionType or param cannot be float
+
         """
-        self.type: ActionType = actiontype
-        self.param = param
+        self.type: ActionType = ActionType(actiontype)
+        self.param = float(param)
 
     def set_type(self, actiontype: ActionType):
         """
@@ -45,8 +48,11 @@ class Action:
         Args:
             actiontype (Actiontype): The type of the action
 
+        Raises:
+            ValueError: If actiontype is no valid ActionType
+
         """
-        self.type = actiontype.value
+        self.type = ActionType(actiontype)
 
     def set_param(self, param: int | float):
         """
@@ -59,8 +65,11 @@ class Action:
                 - Rotate Aircraft (angle in degrees),
                 - Tilt Camera (angle in degrees)
 
+        Raises:
+            ValueError: If param cannot be float
+
         """
-        self.param = param
+        self.param = float(param)
 
     def delete(self):
         """
@@ -76,9 +85,14 @@ class Action:
         Args:
             msec (int): Time to stay in milliseconds
 
+        Raises:
+            ValueError: If msec cannot be int or msec < 0 or msec > 32000
+
         """
+        if int(msec) < 0 or int(msec) > 32000:
+            raise ValueError('allowed range is 0 to 32000')
         self.type = ActionType.STAY_FOR
-        self.param = msec
+        self.param = int(msec)
 
     def set_take_photo(self):
         """
@@ -108,9 +122,14 @@ class Action:
         Args:
             deg (int | float): Rotation in degrees
 
+        Raises:
+            ValueError: If deg cannot be float or deg < 0 or deg > 359
+
         """
+        if float(deg) < 0 or float(deg) > 359:
+            raise ValueError('allowed range is 0 to 359')
         self.type = ActionType.ROTATE_AIRCRAFT
-        self.param = deg
+        self.param = float(deg)
 
     def set_tilt_cam(self, deg: int | float):
         """
@@ -119,6 +138,11 @@ class Action:
         Args:
             deg (int | float): Tiltangle in degrees
 
+        Raises:
+            ValueError: If deg cannot be float or deg < -90 or deg > 30
+
         """
+        if float(deg) < -90 or float(deg) > 30:
+            raise ValueError('allowed range is -90 to 30')
         self.type = ActionType.TILT_CAMERA
-        self.param = deg
+        self.param = float(deg)

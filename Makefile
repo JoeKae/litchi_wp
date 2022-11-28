@@ -12,13 +12,16 @@ stubs-test:
 stubs:
 	stubgen src/litchi_wp -o src
 
-major:
+tests:
+	python -m unittest discover -s tests -t tests -v
+
+major: tests
 	python -m bumpver update --major
 
-minor:
+minor: tests
 	python -m bumpver update --minor
 
-patch:
+patch: tests
 	python -m bumpver update --patch
 
 docs:
@@ -30,7 +33,7 @@ docs:
 	python -m pdoc --docformat google ./src/litchi_wp/poi.py -o ./docs
 	python -m pdoc --docformat google ./src/litchi_wp/waypoint.py -o ./docs
 
-build:
+build: tests
 	$(RRM) dist
 	python -m build
 
@@ -41,4 +44,4 @@ publish: docs build
 	twine upload dist/*
 
 
-.PHONY: docs
+.PHONY: docs tests
