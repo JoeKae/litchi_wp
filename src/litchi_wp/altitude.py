@@ -22,9 +22,12 @@ class Altitude:
             value (float): The height in meters
             mode (AltitudeMode): The altitude mode (MSL or AGL)
 
+        Raises:
+            ValueError: If mode is no valid AltitudeMode or value cannot be float
+
         """
-        self.value = value
-        self.mode = mode
+        self.value = float(value)
+        self.mode = AltitudeMode(mode)
 
     def set_mode(self, mode: AltitudeMode):
         """
@@ -33,8 +36,11 @@ class Altitude:
         Args:
             mode (AltitudeMode): The enum of Altitudemode
 
+        Raises:
+            ValueError: If mode is no valid AltitudeMode
+
         """
-        self.mode = mode
+        self.mode = AltitudeMode(mode)
 
     def set_value(self, value: float):
         """
@@ -43,5 +49,8 @@ class Altitude:
         Args:
             value (float): The height in meters
 
+        Raises:
+            ValueError: If value cannot be float
+
         """
-        self.value = value
+        self.value = float(value)

@@ -4,6 +4,32 @@ Module to bundle all enum classes
 from enum import Enum
 
 
+# pylint: disable=anomalous-backslash-in-string
+class RegEx(Enum):
+    """
+    Enum class for all regular expressions strings
+    """
+    VALID_LITCHI_WP_LINE = (
+            '^[-]?\d+(\.\d+)?,'  # latitude
+            + '[-]?\d+(\.\d+)?,'  # longitude
+            + '\d+(\.\d+)?,'  # altitude(m)
+            + '[-]?\d+(\.\d+)?,'  # heading(deg)
+            + '[-]?\d+(\.\d+)?,'  # curvesize(m)
+            + '[0-1]+,'  # rotationdir
+            + '([-1]|[0-2]),'  # gimbalmode
+            + '[-]?\d+(\.\d+)?,'  # gimbalpitchangle
+            + '((-1|[0-5]),[-]?\d+(\.\d+)?,){15}'  # actiontype, actionparam 1-15
+            + '[0-1],'  # altitudemode
+            + '\d+(\.\d+)?,'  # speed(m/s)
+            + '[-]?\d+(\.\d+)?,'  # poi_latitude
+            + '[-]?\d+(\.\d+)?,'  # poi_longitude
+            + '\d+(\.\d+)?,'  # poi_altitude(m)
+            + '[-]?[0-1],'  # poi_altitudemode
+            + '((-1|\d+)(\.\d+)?),'  # photo_timeinterval
+            + '((-1|\d+)(\.\d+)?)'  # photo_distinterval
+    )
+
+
 class RotationDirection(Enum):
     """
     Enum class for rotation direction

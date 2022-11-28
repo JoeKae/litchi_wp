@@ -23,9 +23,12 @@ class Gimbal:
             mode (GimbalMode): The mode for the gimbal (disabled, focus poi or interpolate)
             pitchangle (float): The gimbal angle in degrees
 
+        Raises:
+            ValueError: If mode is no valid GimbalMode or pitchangle cannot be float
+
         """
-        self.mode = mode
-        self.pitchangle = pitchangle
+        self.mode = GimbalMode(mode)
+        self.pitchangle = float(pitchangle)
 
     def set_focus_poi(self):
         """
@@ -36,6 +39,10 @@ class Gimbal:
     def set_interpolate(self, pitchangle: float):
         """
         Setter for interpolate mode
+
+        Raises:
+            ValueError: If pitchangle cannot be float
+
         """
         self.set_mode(GimbalMode.INTERPOLATE)
         self.set_pitchangle(pitchangle)
@@ -47,8 +54,11 @@ class Gimbal:
         Args:
             mode (GimbalMode): The mode for the gimbal (disabled, focus poi or interpolate)
 
+        Raises:
+            ValueError: If mode is no valid GimbalMode
+
         """
-        self.mode = mode
+        self.mode = GimbalMode(mode)
 
     def set_pitchangle(self, pitchangle: float):
         """
@@ -57,5 +67,10 @@ class Gimbal:
         Args:
             pitchangle (float): The gimbal angle in degrees
 
+        Raises:
+            ValueError: If pitchangle cannot be float or pitchangle < -90 or pitchangle > 30
+
         """
-        self.pitchangle = pitchangle
+        if float(pitchangle) < -90 or float(pitchangle) > 30:
+            raise ValueError('allowed range is -90 to 30')
+        self.pitchangle = float(pitchangle)

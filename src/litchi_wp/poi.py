@@ -1,6 +1,7 @@
 """
 Module for litchi waypoint POIs
 """
+from litchi_wp.altitude import Altitude
 # pylint: disable=import-error
 from litchi_wp.enums import AltitudeMode
 
@@ -12,8 +13,7 @@ class Poi:
     Attributes:
         lat (float): Latitude coordinate for the waypoint in WGS84 format
         lon (float): Longitude coordinate for the waypoint in WGS84 format
-        altitude (float): The altitude in meters
-        altitude_mode (AltitudeMode): The altitudemode
+        altitude (AltitudeMode): The altitude in meters
 
     """
 
@@ -33,11 +33,14 @@ class Poi:
             altitude (float): The altitude in meters
             altitude_mode (AltitudeMode): The altitudemode, MSL or AGL
 
+        Raises:
+            ValueError: If lat cannot be float or lon cannot be float or altitude
+                        cannot be float or altitude_mode is no valid AltitudeMode
+
         """
-        self.lat = lat
-        self.lon = lon
-        self.altitude = altitude
-        self.altitude_mode = altitude_mode
+        self.lat = float(lat)
+        self.lon = float(lon)
+        self.altitude: Altitude = Altitude(value=float(altitude), mode=AltitudeMode(altitude_mode))
 
     def set_coordinates(self, lat: float, lon: float):
         """
@@ -47,9 +50,12 @@ class Poi:
         lat (float): Latitude coordinate for the waypoint in WGS84 format
         lon (float): Longitude coordinate for the waypoint in WGS84 format
 
+        Raises:
+            ValueError: If lat cannot be float or lon cannot be float or altitude
+
         """
-        self.lat = lat
-        self.lon = lon
+        self.lat = float(lat)
+        self.lon = float(lon)
 
     def set_altitude(self, altitude: float):
         """
@@ -58,8 +64,11 @@ class Poi:
         Args:
         altitude (float): The altitude in meters
 
+        Raises:
+            ValueError: If altitude cannot be float or altitude
+
         """
-        self.altitude = altitude
+        self.altitude.set_value(float(altitude))
 
     def set_altitude_mode(self, altitude_mode: AltitudeMode):
         """
@@ -68,5 +77,8 @@ class Poi:
         Args:
             altitude_mode (AltitudeMode): The altitudemode (MSL or AGL)
 
+        Raises:
+            ValueError: If altitude_mode is no valid AltitudeMode
+
         """
-        self.altitude_mode = altitude_mode
+        self.altitude.set_mode(AltitudeMode(altitude_mode))

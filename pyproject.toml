@@ -7,7 +7,7 @@ litchi_wp = ["*.pyi", "py.typed"]
 
 [project]
 name = "litchi_wp"
-version = "2.1.0"
+version = "3.0.0"
 description = "Easy to manage litchi waypoints for csv"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -25,12 +25,12 @@ requires-python = ">=3.10"
 dev = []
 
 [project.urls]
-Documentation = "https://htmlpreview.github.io/?https://raw.githubusercontent.com/JoeKae/litchi_wp/main/docs/litchi_wp/waypoint.html"
+Documentation = "https://joekae.github.io/litchi_wp/litchi_wp/waypoint.html"
 GitHub = "https://github.com/JoeKae/litchi-wp"
 Changelog = "https://github.com/JoeKae/litchi_wp/blob/main/CHANGELOG.md"
 
 [tool.bumpver]
-current_version = "2.1.0"
+current_version = "3.0.0"
 version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
 commit_message = "bump version {old_version} -> {new_version}"
 commit = false

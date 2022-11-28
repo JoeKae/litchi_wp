@@ -67,19 +67,19 @@ litchi_wp<wbr>.poi    </h1>
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a><span class="sd">Module for litchi waypoint POIs</span>
 </span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="c1"># pylint: disable=import-error</span>
-</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="kn">from</span> <span class="nn">litchi_wp.enums</span> <span class="kn">import</span> <span class="n">AltitudeMode</span>
-</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>
+</span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="kn">from</span> <span class="nn">litchi_wp.altitude</span> <span class="kn">import</span> <span class="n">Altitude</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="c1"># pylint: disable=import-error</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="kn">from</span> <span class="nn">litchi_wp.enums</span> <span class="kn">import</span> <span class="n">AltitudeMode</span>
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>
-</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="k">class</span> <span class="nc">Poi</span><span class="p">:</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>    <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="sd">    Class representing a litchi waypoint POI</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="sd">    Attributes:</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">        lat (float): Latitude coordinate for the waypoint in WGS84 format</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="sd">        lon (float): Longitude coordinate for the waypoint in WGS84 format</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">        altitude (float): The altitude in meters</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">        altitude_mode (AltitudeMode): The altitudemode</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="k">class</span> <span class="nc">Poi</span><span class="p">:</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="sd">    Class representing a litchi waypoint POI</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">    Attributes:</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="sd">        lat (float): Latitude coordinate for the waypoint in WGS84 format</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">        lon (float): Longitude coordinate for the waypoint in WGS84 format</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">        altitude (AltitudeMode): The altitude in meters</span>
 </span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>
 </span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>
@@ -99,43 +99,55 @@ litchi_wp<wbr>.poi    </h1>
 </span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">            altitude (float): The altitude in meters</span>
 </span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">            altitude_mode (AltitudeMode): The altitudemode, MSL or AGL</span>
 </span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="n">lat</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lon</span> <span class="o">=</span> <span class="n">lon</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude</span> <span class="o">=</span> <span class="n">altitude</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude_mode</span> <span class="o">=</span> <span class="n">altitude_mode</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>    <span class="k">def</span> <span class="nf">set_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">lon</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        Setter for coordinates</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        Args:</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        lat (float): Latitude coordinate for the waypoint in WGS84 format</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        lon (float): Longitude coordinate for the waypoint in WGS84 format</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="n">lat</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lon</span> <span class="o">=</span> <span class="n">lon</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="k">def</span> <span class="nf">set_altitude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">altitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">        Setter for altitude</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="sd">        Args:</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">        altitude (float): The altitude in meters</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude</span> <span class="o">=</span> <span class="n">altitude</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">        Raises:</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">            ValueError: If lat cannot be float or lon cannot be float or altitude</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">                        cannot be float or altitude_mode is no valid AltitudeMode</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lon</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude</span><span class="p">:</span> <span class="n">Altitude</span> <span class="o">=</span> <span class="n">Altitude</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">altitude</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">AltitudeMode</span><span class="p">(</span><span class="n">altitude_mode</span><span class="p">))</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>    <span class="k">def</span> <span class="nf">set_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">lon</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        Setter for coordinates</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        Args:</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        lat (float): Latitude coordinate for the waypoint in WGS84 format</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        lon (float): Longitude coordinate for the waypoint in WGS84 format</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">        Raises:</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">            ValueError: If lat cannot be float or lon cannot be float or altitude</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lon</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="k">def</span> <span class="nf">set_altitude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">altitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a><span class="sd">        Setter for altitude</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="k">def</span> <span class="nf">set_altitude_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">altitude_mode</span><span class="p">:</span> <span class="n">AltitudeMode</span><span class="p">):</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a><span class="sd">        Setter for the altitude mode</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a><span class="sd">        Args:</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a><span class="sd">            altitude_mode (AltitudeMode): The altitudemode (MSL or AGL)</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude_mode</span> <span class="o">=</span> <span class="n">altitude_mode</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a><span class="sd">        Args:</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a><span class="sd">        altitude (float): The altitude in meters</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a><span class="sd">        Raises:</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a><span class="sd">            ValueError: If altitude cannot be float or altitude</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">altitude</span><span class="p">))</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="k">def</span> <span class="nf">set_altitude_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">altitude_mode</span><span class="p">:</span> <span class="n">AltitudeMode</span><span class="p">):</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a><span class="sd">        Setter for the altitude mode</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a><span class="sd">        Args:</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a><span class="sd">            altitude_mode (AltitudeMode): The altitudemode (MSL or AGL)</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a><span class="sd">        Raises:</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a><span class="sd">            ValueError: If altitude_mode is no valid AltitudeMode</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">AltitudeMode</span><span class="p">(</span><span class="n">altitude_mode</span><span class="p">))</span>
 </span></pre></div>
 
 
@@ -151,15 +163,14 @@ litchi_wp<wbr>.poi    </h1>
 
     </div>
     <a class="headerlink" href="#Poi"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Poi-9"><a href="#Poi-9"><span class="linenos"> 9</span></a><span class="k">class</span> <span class="nc">Poi</span><span class="p">:</span>
-</span><span id="Poi-10"><a href="#Poi-10"><span class="linenos">10</span></a>    <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Poi-11"><a href="#Poi-11"><span class="linenos">11</span></a><span class="sd">    Class representing a litchi waypoint POI</span>
-</span><span id="Poi-12"><a href="#Poi-12"><span class="linenos">12</span></a>
-</span><span id="Poi-13"><a href="#Poi-13"><span class="linenos">13</span></a><span class="sd">    Attributes:</span>
-</span><span id="Poi-14"><a href="#Poi-14"><span class="linenos">14</span></a><span class="sd">        lat (float): Latitude coordinate for the waypoint in WGS84 format</span>
-</span><span id="Poi-15"><a href="#Poi-15"><span class="linenos">15</span></a><span class="sd">        lon (float): Longitude coordinate for the waypoint in WGS84 format</span>
-</span><span id="Poi-16"><a href="#Poi-16"><span class="linenos">16</span></a><span class="sd">        altitude (float): The altitude in meters</span>
-</span><span id="Poi-17"><a href="#Poi-17"><span class="linenos">17</span></a><span class="sd">        altitude_mode (AltitudeMode): The altitudemode</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Poi-10"><a href="#Poi-10"><span class="linenos">10</span></a><span class="k">class</span> <span class="nc">Poi</span><span class="p">:</span>
+</span><span id="Poi-11"><a href="#Poi-11"><span class="linenos">11</span></a>    <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Poi-12"><a href="#Poi-12"><span class="linenos">12</span></a><span class="sd">    Class representing a litchi waypoint POI</span>
+</span><span id="Poi-13"><a href="#Poi-13"><span class="linenos">13</span></a>
+</span><span id="Poi-14"><a href="#Poi-14"><span class="linenos">14</span></a><span class="sd">    Attributes:</span>
+</span><span id="Poi-15"><a href="#Poi-15"><span class="linenos">15</span></a><span class="sd">        lat (float): Latitude coordinate for the waypoint in WGS84 format</span>
+</span><span id="Poi-16"><a href="#Poi-16"><span class="linenos">16</span></a><span class="sd">        lon (float): Longitude coordinate for the waypoint in WGS84 format</span>
+</span><span id="Poi-17"><a href="#Poi-17"><span class="linenos">17</span></a><span class="sd">        altitude (AltitudeMode): The altitude in meters</span>
 </span><span id="Poi-18"><a href="#Poi-18"><span class="linenos">18</span></a>
 </span><span id="Poi-19"><a href="#Poi-19"><span class="linenos">19</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="Poi-20"><a href="#Poi-20"><span class="linenos">20</span></a>
@@ -179,43 +190,55 @@ litchi_wp<wbr>.poi    </h1>
 </span><span id="Poi-34"><a href="#Poi-34"><span class="linenos">34</span></a><span class="sd">            altitude (float): The altitude in meters</span>
 </span><span id="Poi-35"><a href="#Poi-35"><span class="linenos">35</span></a><span class="sd">            altitude_mode (AltitudeMode): The altitudemode, MSL or AGL</span>
 </span><span id="Poi-36"><a href="#Poi-36"><span class="linenos">36</span></a>
-</span><span id="Poi-37"><a href="#Poi-37"><span class="linenos">37</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Poi-38"><a href="#Poi-38"><span class="linenos">38</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="n">lat</span>
-</span><span id="Poi-39"><a href="#Poi-39"><span class="linenos">39</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lon</span> <span class="o">=</span> <span class="n">lon</span>
-</span><span id="Poi-40"><a href="#Poi-40"><span class="linenos">40</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude</span> <span class="o">=</span> <span class="n">altitude</span>
-</span><span id="Poi-41"><a href="#Poi-41"><span class="linenos">41</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude_mode</span> <span class="o">=</span> <span class="n">altitude_mode</span>
-</span><span id="Poi-42"><a href="#Poi-42"><span class="linenos">42</span></a>
-</span><span id="Poi-43"><a href="#Poi-43"><span class="linenos">43</span></a>    <span class="k">def</span> <span class="nf">set_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">lon</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-</span><span id="Poi-44"><a href="#Poi-44"><span class="linenos">44</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Poi-45"><a href="#Poi-45"><span class="linenos">45</span></a><span class="sd">        Setter for coordinates</span>
-</span><span id="Poi-46"><a href="#Poi-46"><span class="linenos">46</span></a>
-</span><span id="Poi-47"><a href="#Poi-47"><span class="linenos">47</span></a><span class="sd">        Args:</span>
-</span><span id="Poi-48"><a href="#Poi-48"><span class="linenos">48</span></a><span class="sd">        lat (float): Latitude coordinate for the waypoint in WGS84 format</span>
-</span><span id="Poi-49"><a href="#Poi-49"><span class="linenos">49</span></a><span class="sd">        lon (float): Longitude coordinate for the waypoint in WGS84 format</span>
-</span><span id="Poi-50"><a href="#Poi-50"><span class="linenos">50</span></a>
-</span><span id="Poi-51"><a href="#Poi-51"><span class="linenos">51</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Poi-52"><a href="#Poi-52"><span class="linenos">52</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="n">lat</span>
-</span><span id="Poi-53"><a href="#Poi-53"><span class="linenos">53</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lon</span> <span class="o">=</span> <span class="n">lon</span>
-</span><span id="Poi-54"><a href="#Poi-54"><span class="linenos">54</span></a>
-</span><span id="Poi-55"><a href="#Poi-55"><span class="linenos">55</span></a>    <span class="k">def</span> <span class="nf">set_altitude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">altitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-</span><span id="Poi-56"><a href="#Poi-56"><span class="linenos">56</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Poi-57"><a href="#Poi-57"><span class="linenos">57</span></a><span class="sd">        Setter for altitude</span>
-</span><span id="Poi-58"><a href="#Poi-58"><span class="linenos">58</span></a>
-</span><span id="Poi-59"><a href="#Poi-59"><span class="linenos">59</span></a><span class="sd">        Args:</span>
-</span><span id="Poi-60"><a href="#Poi-60"><span class="linenos">60</span></a><span class="sd">        altitude (float): The altitude in meters</span>
-</span><span id="Poi-61"><a href="#Poi-61"><span class="linenos">61</span></a>
-</span><span id="Poi-62"><a href="#Poi-62"><span class="linenos">62</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Poi-63"><a href="#Poi-63"><span class="linenos">63</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude</span> <span class="o">=</span> <span class="n">altitude</span>
+</span><span id="Poi-37"><a href="#Poi-37"><span class="linenos">37</span></a><span class="sd">        Raises:</span>
+</span><span id="Poi-38"><a href="#Poi-38"><span class="linenos">38</span></a><span class="sd">            ValueError: If lat cannot be float or lon cannot be float or altitude</span>
+</span><span id="Poi-39"><a href="#Poi-39"><span class="linenos">39</span></a><span class="sd">                        cannot be float or altitude_mode is no valid AltitudeMode</span>
+</span><span id="Poi-40"><a href="#Poi-40"><span class="linenos">40</span></a>
+</span><span id="Poi-41"><a href="#Poi-41"><span class="linenos">41</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Poi-42"><a href="#Poi-42"><span class="linenos">42</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+</span><span id="Poi-43"><a href="#Poi-43"><span class="linenos">43</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lon</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+</span><span id="Poi-44"><a href="#Poi-44"><span class="linenos">44</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude</span><span class="p">:</span> <span class="n">Altitude</span> <span class="o">=</span> <span class="n">Altitude</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">altitude</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">AltitudeMode</span><span class="p">(</span><span class="n">altitude_mode</span><span class="p">))</span>
+</span><span id="Poi-45"><a href="#Poi-45"><span class="linenos">45</span></a>
+</span><span id="Poi-46"><a href="#Poi-46"><span class="linenos">46</span></a>    <span class="k">def</span> <span class="nf">set_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">lon</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="Poi-47"><a href="#Poi-47"><span class="linenos">47</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Poi-48"><a href="#Poi-48"><span class="linenos">48</span></a><span class="sd">        Setter for coordinates</span>
+</span><span id="Poi-49"><a href="#Poi-49"><span class="linenos">49</span></a>
+</span><span id="Poi-50"><a href="#Poi-50"><span class="linenos">50</span></a><span class="sd">        Args:</span>
+</span><span id="Poi-51"><a href="#Poi-51"><span class="linenos">51</span></a><span class="sd">        lat (float): Latitude coordinate for the waypoint in WGS84 format</span>
+</span><span id="Poi-52"><a href="#Poi-52"><span class="linenos">52</span></a><span class="sd">        lon (float): Longitude coordinate for the waypoint in WGS84 format</span>
+</span><span id="Poi-53"><a href="#Poi-53"><span class="linenos">53</span></a>
+</span><span id="Poi-54"><a href="#Poi-54"><span class="linenos">54</span></a><span class="sd">        Raises:</span>
+</span><span id="Poi-55"><a href="#Poi-55"><span class="linenos">55</span></a><span class="sd">            ValueError: If lat cannot be float or lon cannot be float or altitude</span>
+</span><span id="Poi-56"><a href="#Poi-56"><span class="linenos">56</span></a>
+</span><span id="Poi-57"><a href="#Poi-57"><span class="linenos">57</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Poi-58"><a href="#Poi-58"><span class="linenos">58</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+</span><span id="Poi-59"><a href="#Poi-59"><span class="linenos">59</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lon</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+</span><span id="Poi-60"><a href="#Poi-60"><span class="linenos">60</span></a>
+</span><span id="Poi-61"><a href="#Poi-61"><span class="linenos">61</span></a>    <span class="k">def</span> <span class="nf">set_altitude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">altitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="Poi-62"><a href="#Poi-62"><span class="linenos">62</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Poi-63"><a href="#Poi-63"><span class="linenos">63</span></a><span class="sd">        Setter for altitude</span>
 </span><span id="Poi-64"><a href="#Poi-64"><span class="linenos">64</span></a>
-</span><span id="Poi-65"><a href="#Poi-65"><span class="linenos">65</span></a>    <span class="k">def</span> <span class="nf">set_altitude_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">altitude_mode</span><span class="p">:</span> <span class="n">AltitudeMode</span><span class="p">):</span>
-</span><span id="Poi-66"><a href="#Poi-66"><span class="linenos">66</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Poi-67"><a href="#Poi-67"><span class="linenos">67</span></a><span class="sd">        Setter for the altitude mode</span>
-</span><span id="Poi-68"><a href="#Poi-68"><span class="linenos">68</span></a>
-</span><span id="Poi-69"><a href="#Poi-69"><span class="linenos">69</span></a><span class="sd">        Args:</span>
-</span><span id="Poi-70"><a href="#Poi-70"><span class="linenos">70</span></a><span class="sd">            altitude_mode (AltitudeMode): The altitudemode (MSL or AGL)</span>
-</span><span id="Poi-71"><a href="#Poi-71"><span class="linenos">71</span></a>
-</span><span id="Poi-72"><a href="#Poi-72"><span class="linenos">72</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Poi-73"><a href="#Poi-73"><span class="linenos">73</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude_mode</span> <span class="o">=</span> <span class="n">altitude_mode</span>
+</span><span id="Poi-65"><a href="#Poi-65"><span class="linenos">65</span></a><span class="sd">        Args:</span>
+</span><span id="Poi-66"><a href="#Poi-66"><span class="linenos">66</span></a><span class="sd">        altitude (float): The altitude in meters</span>
+</span><span id="Poi-67"><a href="#Poi-67"><span class="linenos">67</span></a>
+</span><span id="Poi-68"><a href="#Poi-68"><span class="linenos">68</span></a><span class="sd">        Raises:</span>
+</span><span id="Poi-69"><a href="#Poi-69"><span class="linenos">69</span></a><span class="sd">            ValueError: If altitude cannot be float or altitude</span>
+</span><span id="Poi-70"><a href="#Poi-70"><span class="linenos">70</span></a>
+</span><span id="Poi-71"><a href="#Poi-71"><span class="linenos">71</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Poi-72"><a href="#Poi-72"><span class="linenos">72</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">altitude</span><span class="p">))</span>
+</span><span id="Poi-73"><a href="#Poi-73"><span class="linenos">73</span></a>
+</span><span id="Poi-74"><a href="#Poi-74"><span class="linenos">74</span></a>    <span class="k">def</span> <span class="nf">set_altitude_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">altitude_mode</span><span class="p">:</span> <span class="n">AltitudeMode</span><span class="p">):</span>
+</span><span id="Poi-75"><a href="#Poi-75"><span class="linenos">75</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Poi-76"><a href="#Poi-76"><span class="linenos">76</span></a><span class="sd">        Setter for the altitude mode</span>
+</span><span id="Poi-77"><a href="#Poi-77"><span class="linenos">77</span></a>
+</span><span id="Poi-78"><a href="#Poi-78"><span class="linenos">78</span></a><span class="sd">        Args:</span>
+</span><span id="Poi-79"><a href="#Poi-79"><span class="linenos">79</span></a><span class="sd">            altitude_mode (AltitudeMode): The altitudemode (MSL or AGL)</span>
+</span><span id="Poi-80"><a href="#Poi-80"><span class="linenos">80</span></a>
+</span><span id="Poi-81"><a href="#Poi-81"><span class="linenos">81</span></a><span class="sd">        Raises:</span>
+</span><span id="Poi-82"><a href="#Poi-82"><span class="linenos">82</span></a><span class="sd">            ValueError: If altitude_mode is no valid AltitudeMode</span>
+</span><span id="Poi-83"><a href="#Poi-83"><span class="linenos">83</span></a>
+</span><span id="Poi-84"><a href="#Poi-84"><span class="linenos">84</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Poi-85"><a href="#Poi-85"><span class="linenos">85</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">AltitudeMode</span><span class="p">(</span><span class="n">altitude_mode</span><span class="p">))</span>
 </span></pre></div>
 
 
@@ -226,8 +249,7 @@ litchi_wp<wbr>.poi    </h1>
 <ul>
 <li><strong>lat (float):</strong>  Latitude coordinate for the waypoint in WGS84 format</li>
 <li><strong>lon (float):</strong>  Longitude coordinate for the waypoint in WGS84 format</li>
-<li><strong>altitude (float):</strong>  The altitude in meters</li>
-<li><strong>altitude_mode (AltitudeMode):</strong>  The altitudemode</li>
+<li><strong>altitude (AltitudeMode):</strong>  The altitude in meters</li>
 </ul>
 </div>
 
@@ -236,7 +258,7 @@ litchi_wp<wbr>.poi    </h1>
                                         <input id="Poi.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
-        <span class="name">Poi</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">lat</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="bp">Ellipsis</span>,</span><span class="param">	<span class="n">lon</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="bp">Ellipsis</span>,</span><span class="param">	<span class="n">altitude</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="bp">Ellipsis</span>,</span><span class="param">	<span class="n">altitude_mode</span><span class="p">:</span> <span class="n">litchi_wp</span><span class="o">.</span><span class="n">enums</span><span class="o">.</span><span class="n">AltitudeMode</span> <span class="o">=</span> <span class="bp">Ellipsis</span></span>)</span>
+        <span class="name">Poi</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">lat</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">lon</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">altitude</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>,</span><span class="param">	<span class="n">altitude_mode</span><span class="p">:</span> <span class="n">litchi_wp</span><span class="o">.</span><span class="n">enums</span><span class="o">.</span><span class="n">AltitudeMode</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">AltitudeMode</span><span class="o">.</span><span class="n">MSL</span><span class="p">:</span> <span class="mi">0</span><span class="o">&gt;</span></span>)</span>
 
                 <label class="view-source-button" for="Poi.__init__-view-source"><span>View Source</span></label>
 
@@ -258,11 +280,14 @@ litchi_wp<wbr>.poi    </h1>
 </span><span id="Poi.__init__-34"><a href="#Poi.__init__-34"><span class="linenos">34</span></a><span class="sd">            altitude (float): The altitude in meters</span>
 </span><span id="Poi.__init__-35"><a href="#Poi.__init__-35"><span class="linenos">35</span></a><span class="sd">            altitude_mode (AltitudeMode): The altitudemode, MSL or AGL</span>
 </span><span id="Poi.__init__-36"><a href="#Poi.__init__-36"><span class="linenos">36</span></a>
-</span><span id="Poi.__init__-37"><a href="#Poi.__init__-37"><span class="linenos">37</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Poi.__init__-38"><a href="#Poi.__init__-38"><span class="linenos">38</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="n">lat</span>
-</span><span id="Poi.__init__-39"><a href="#Poi.__init__-39"><span class="linenos">39</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lon</span> <span class="o">=</span> <span class="n">lon</span>
-</span><span id="Poi.__init__-40"><a href="#Poi.__init__-40"><span class="linenos">40</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude</span> <span class="o">=</span> <span class="n">altitude</span>
-</span><span id="Poi.__init__-41"><a href="#Poi.__init__-41"><span class="linenos">41</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude_mode</span> <span class="o">=</span> <span class="n">altitude_mode</span>
+</span><span id="Poi.__init__-37"><a href="#Poi.__init__-37"><span class="linenos">37</span></a><span class="sd">        Raises:</span>
+</span><span id="Poi.__init__-38"><a href="#Poi.__init__-38"><span class="linenos">38</span></a><span class="sd">            ValueError: If lat cannot be float or lon cannot be float or altitude</span>
+</span><span id="Poi.__init__-39"><a href="#Poi.__init__-39"><span class="linenos">39</span></a><span class="sd">                        cannot be float or altitude_mode is no valid AltitudeMode</span>
+</span><span id="Poi.__init__-40"><a href="#Poi.__init__-40"><span class="linenos">40</span></a>
+</span><span id="Poi.__init__-41"><a href="#Poi.__init__-41"><span class="linenos">41</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Poi.__init__-42"><a href="#Poi.__init__-42"><span class="linenos">42</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+</span><span id="Poi.__init__-43"><a href="#Poi.__init__-43"><span class="linenos">43</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lon</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+</span><span id="Poi.__init__-44"><a href="#Poi.__init__-44"><span class="linenos">44</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude</span><span class="p">:</span> <span class="n">Altitude</span> <span class="o">=</span> <span class="n">Altitude</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">altitude</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">AltitudeMode</span><span class="p">(</span><span class="n">altitude_mode</span><span class="p">))</span>
 </span></pre></div>
 
 
@@ -275,6 +300,13 @@ litchi_wp<wbr>.poi    </h1>
 <li><strong>lon (float):</strong>  Longitude coordinate for the waypoint in WGS84 format</li>
 <li><strong>altitude (float):</strong>  The altitude in meters</li>
 <li><strong>altitude_mode (AltitudeMode):</strong>  The altitudemode, MSL or AGL</li>
+</ul>
+
+<h6 id="raises">Raises:</h6>
+
+<ul>
+<li><strong>ValueError:</strong>  If lat cannot be float or lon cannot be float or altitude
+cannot be float or altitude_mode is no valid AltitudeMode</li>
 </ul>
 </div>
 
@@ -291,17 +323,20 @@ litchi_wp<wbr>.poi    </h1>
 
     </div>
     <a class="headerlink" href="#Poi.set_coordinates"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Poi.set_coordinates-43"><a href="#Poi.set_coordinates-43"><span class="linenos">43</span></a>    <span class="k">def</span> <span class="nf">set_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">lon</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-</span><span id="Poi.set_coordinates-44"><a href="#Poi.set_coordinates-44"><span class="linenos">44</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Poi.set_coordinates-45"><a href="#Poi.set_coordinates-45"><span class="linenos">45</span></a><span class="sd">        Setter for coordinates</span>
-</span><span id="Poi.set_coordinates-46"><a href="#Poi.set_coordinates-46"><span class="linenos">46</span></a>
-</span><span id="Poi.set_coordinates-47"><a href="#Poi.set_coordinates-47"><span class="linenos">47</span></a><span class="sd">        Args:</span>
-</span><span id="Poi.set_coordinates-48"><a href="#Poi.set_coordinates-48"><span class="linenos">48</span></a><span class="sd">        lat (float): Latitude coordinate for the waypoint in WGS84 format</span>
-</span><span id="Poi.set_coordinates-49"><a href="#Poi.set_coordinates-49"><span class="linenos">49</span></a><span class="sd">        lon (float): Longitude coordinate for the waypoint in WGS84 format</span>
-</span><span id="Poi.set_coordinates-50"><a href="#Poi.set_coordinates-50"><span class="linenos">50</span></a>
-</span><span id="Poi.set_coordinates-51"><a href="#Poi.set_coordinates-51"><span class="linenos">51</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Poi.set_coordinates-52"><a href="#Poi.set_coordinates-52"><span class="linenos">52</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="n">lat</span>
-</span><span id="Poi.set_coordinates-53"><a href="#Poi.set_coordinates-53"><span class="linenos">53</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lon</span> <span class="o">=</span> <span class="n">lon</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Poi.set_coordinates-46"><a href="#Poi.set_coordinates-46"><span class="linenos">46</span></a>    <span class="k">def</span> <span class="nf">set_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">lon</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="Poi.set_coordinates-47"><a href="#Poi.set_coordinates-47"><span class="linenos">47</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Poi.set_coordinates-48"><a href="#Poi.set_coordinates-48"><span class="linenos">48</span></a><span class="sd">        Setter for coordinates</span>
+</span><span id="Poi.set_coordinates-49"><a href="#Poi.set_coordinates-49"><span class="linenos">49</span></a>
+</span><span id="Poi.set_coordinates-50"><a href="#Poi.set_coordinates-50"><span class="linenos">50</span></a><span class="sd">        Args:</span>
+</span><span id="Poi.set_coordinates-51"><a href="#Poi.set_coordinates-51"><span class="linenos">51</span></a><span class="sd">        lat (float): Latitude coordinate for the waypoint in WGS84 format</span>
+</span><span id="Poi.set_coordinates-52"><a href="#Poi.set_coordinates-52"><span class="linenos">52</span></a><span class="sd">        lon (float): Longitude coordinate for the waypoint in WGS84 format</span>
+</span><span id="Poi.set_coordinates-53"><a href="#Poi.set_coordinates-53"><span class="linenos">53</span></a>
+</span><span id="Poi.set_coordinates-54"><a href="#Poi.set_coordinates-54"><span class="linenos">54</span></a><span class="sd">        Raises:</span>
+</span><span id="Poi.set_coordinates-55"><a href="#Poi.set_coordinates-55"><span class="linenos">55</span></a><span class="sd">            ValueError: If lat cannot be float or lon cannot be float or altitude</span>
+</span><span id="Poi.set_coordinates-56"><a href="#Poi.set_coordinates-56"><span class="linenos">56</span></a>
+</span><span id="Poi.set_coordinates-57"><a href="#Poi.set_coordinates-57"><span class="linenos">57</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Poi.set_coordinates-58"><a href="#Poi.set_coordinates-58"><span class="linenos">58</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+</span><span id="Poi.set_coordinates-59"><a href="#Poi.set_coordinates-59"><span class="linenos">59</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lon</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -310,6 +345,12 @@ litchi_wp<wbr>.poi    </h1>
 <p>Args:
 lat (float): Latitude coordinate for the waypoint in WGS84 format
 lon (float): Longitude coordinate for the waypoint in WGS84 format</p>
+
+<h6 id="raises">Raises:</h6>
+
+<ul>
+<li><strong>ValueError:</strong>  If lat cannot be float or lon cannot be float or altitude</li>
+</ul>
 </div>
 
 
@@ -325,15 +366,18 @@ lon (float): Longitude coordinate for the waypoint in WGS84 format</p>
 
     </div>
     <a class="headerlink" href="#Poi.set_altitude"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Poi.set_altitude-55"><a href="#Poi.set_altitude-55"><span class="linenos">55</span></a>    <span class="k">def</span> <span class="nf">set_altitude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">altitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-</span><span id="Poi.set_altitude-56"><a href="#Poi.set_altitude-56"><span class="linenos">56</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Poi.set_altitude-57"><a href="#Poi.set_altitude-57"><span class="linenos">57</span></a><span class="sd">        Setter for altitude</span>
-</span><span id="Poi.set_altitude-58"><a href="#Poi.set_altitude-58"><span class="linenos">58</span></a>
-</span><span id="Poi.set_altitude-59"><a href="#Poi.set_altitude-59"><span class="linenos">59</span></a><span class="sd">        Args:</span>
-</span><span id="Poi.set_altitude-60"><a href="#Poi.set_altitude-60"><span class="linenos">60</span></a><span class="sd">        altitude (float): The altitude in meters</span>
-</span><span id="Poi.set_altitude-61"><a href="#Poi.set_altitude-61"><span class="linenos">61</span></a>
-</span><span id="Poi.set_altitude-62"><a href="#Poi.set_altitude-62"><span class="linenos">62</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Poi.set_altitude-63"><a href="#Poi.set_altitude-63"><span class="linenos">63</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude</span> <span class="o">=</span> <span class="n">altitude</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Poi.set_altitude-61"><a href="#Poi.set_altitude-61"><span class="linenos">61</span></a>    <span class="k">def</span> <span class="nf">set_altitude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">altitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="Poi.set_altitude-62"><a href="#Poi.set_altitude-62"><span class="linenos">62</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Poi.set_altitude-63"><a href="#Poi.set_altitude-63"><span class="linenos">63</span></a><span class="sd">        Setter for altitude</span>
+</span><span id="Poi.set_altitude-64"><a href="#Poi.set_altitude-64"><span class="linenos">64</span></a>
+</span><span id="Poi.set_altitude-65"><a href="#Poi.set_altitude-65"><span class="linenos">65</span></a><span class="sd">        Args:</span>
+</span><span id="Poi.set_altitude-66"><a href="#Poi.set_altitude-66"><span class="linenos">66</span></a><span class="sd">        altitude (float): The altitude in meters</span>
+</span><span id="Poi.set_altitude-67"><a href="#Poi.set_altitude-67"><span class="linenos">67</span></a>
+</span><span id="Poi.set_altitude-68"><a href="#Poi.set_altitude-68"><span class="linenos">68</span></a><span class="sd">        Raises:</span>
+</span><span id="Poi.set_altitude-69"><a href="#Poi.set_altitude-69"><span class="linenos">69</span></a><span class="sd">            ValueError: If altitude cannot be float or altitude</span>
+</span><span id="Poi.set_altitude-70"><a href="#Poi.set_altitude-70"><span class="linenos">70</span></a>
+</span><span id="Poi.set_altitude-71"><a href="#Poi.set_altitude-71"><span class="linenos">71</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Poi.set_altitude-72"><a href="#Poi.set_altitude-72"><span class="linenos">72</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">altitude</span><span class="p">))</span>
 </span></pre></div>
 
 
@@ -341,6 +385,12 @@ lon (float): Longitude coordinate for the waypoint in WGS84 format</p>
 
 <p>Args:
 altitude (float): The altitude in meters</p>
+
+<h6 id="raises">Raises:</h6>
+
+<ul>
+<li><strong>ValueError:</strong>  If altitude cannot be float or altitude</li>
+</ul>
 </div>
 
 
@@ -356,15 +406,18 @@ altitude (float): The altitude in meters</p>
 
     </div>
     <a class="headerlink" href="#Poi.set_altitude_mode"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Poi.set_altitude_mode-65"><a href="#Poi.set_altitude_mode-65"><span class="linenos">65</span></a>    <span class="k">def</span> <span class="nf">set_altitude_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">altitude_mode</span><span class="p">:</span> <span class="n">AltitudeMode</span><span class="p">):</span>
-</span><span id="Poi.set_altitude_mode-66"><a href="#Poi.set_altitude_mode-66"><span class="linenos">66</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Poi.set_altitude_mode-67"><a href="#Poi.set_altitude_mode-67"><span class="linenos">67</span></a><span class="sd">        Setter for the altitude mode</span>
-</span><span id="Poi.set_altitude_mode-68"><a href="#Poi.set_altitude_mode-68"><span class="linenos">68</span></a>
-</span><span id="Poi.set_altitude_mode-69"><a href="#Poi.set_altitude_mode-69"><span class="linenos">69</span></a><span class="sd">        Args:</span>
-</span><span id="Poi.set_altitude_mode-70"><a href="#Poi.set_altitude_mode-70"><span class="linenos">70</span></a><span class="sd">            altitude_mode (AltitudeMode): The altitudemode (MSL or AGL)</span>
-</span><span id="Poi.set_altitude_mode-71"><a href="#Poi.set_altitude_mode-71"><span class="linenos">71</span></a>
-</span><span id="Poi.set_altitude_mode-72"><a href="#Poi.set_altitude_mode-72"><span class="linenos">72</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Poi.set_altitude_mode-73"><a href="#Poi.set_altitude_mode-73"><span class="linenos">73</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude_mode</span> <span class="o">=</span> <span class="n">altitude_mode</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Poi.set_altitude_mode-74"><a href="#Poi.set_altitude_mode-74"><span class="linenos">74</span></a>    <span class="k">def</span> <span class="nf">set_altitude_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">altitude_mode</span><span class="p">:</span> <span class="n">AltitudeMode</span><span class="p">):</span>
+</span><span id="Poi.set_altitude_mode-75"><a href="#Poi.set_altitude_mode-75"><span class="linenos">75</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Poi.set_altitude_mode-76"><a href="#Poi.set_altitude_mode-76"><span class="linenos">76</span></a><span class="sd">        Setter for the altitude mode</span>
+</span><span id="Poi.set_altitude_mode-77"><a href="#Poi.set_altitude_mode-77"><span class="linenos">77</span></a>
+</span><span id="Poi.set_altitude_mode-78"><a href="#Poi.set_altitude_mode-78"><span class="linenos">78</span></a><span class="sd">        Args:</span>
+</span><span id="Poi.set_altitude_mode-79"><a href="#Poi.set_altitude_mode-79"><span class="linenos">79</span></a><span class="sd">            altitude_mode (AltitudeMode): The altitudemode (MSL or AGL)</span>
+</span><span id="Poi.set_altitude_mode-80"><a href="#Poi.set_altitude_mode-80"><span class="linenos">80</span></a>
+</span><span id="Poi.set_altitude_mode-81"><a href="#Poi.set_altitude_mode-81"><span class="linenos">81</span></a><span class="sd">        Raises:</span>
+</span><span id="Poi.set_altitude_mode-82"><a href="#Poi.set_altitude_mode-82"><span class="linenos">82</span></a><span class="sd">            ValueError: If altitude_mode is no valid AltitudeMode</span>
+</span><span id="Poi.set_altitude_mode-83"><a href="#Poi.set_altitude_mode-83"><span class="linenos">83</span></a>
+</span><span id="Poi.set_altitude_mode-84"><a href="#Poi.set_altitude_mode-84"><span class="linenos">84</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Poi.set_altitude_mode-85"><a href="#Poi.set_altitude_mode-85"><span class="linenos">85</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">altitude</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">AltitudeMode</span><span class="p">(</span><span class="n">altitude_mode</span><span class="p">))</span>
 </span></pre></div>
 
 
@@ -374,6 +427,12 @@ altitude (float): The altitude in meters</p>
 
 <ul>
 <li><strong>altitude_mode (AltitudeMode):</strong>  The altitudemode (MSL or AGL)</li>
+</ul>
+
+<h6 id="raises">Raises:</h6>
+
+<ul>
+<li><strong>ValueError:</strong>  If altitude_mode is no valid AltitudeMode</li>
 </ul>
 </div>
 

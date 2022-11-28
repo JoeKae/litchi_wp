@@ -118,94 +118,118 @@ litchi_wp<wbr>.action    </h1>
 </span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="sd">                - Start Recording (set to 0)</span>
 </span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">                - Stop Recording (set to 0)</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">:</span> <span class="n">ActionType</span> <span class="o">=</span> <span class="n">actiontype</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">param</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>    <span class="k">def</span> <span class="nf">set_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actiontype</span><span class="p">:</span> <span class="n">ActionType</span><span class="p">):</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">        Setter for the type of the action</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">        Args:</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">            actiontype (Actiontype): The type of the action</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="sd">        Raises:</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">            ValueError: If actiontype is no valid ActionType or param cannot be float</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>
+</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">:</span> <span class="n">ActionType</span> <span class="o">=</span> <span class="n">ActionType</span><span class="p">(</span><span class="n">actiontype</span><span class="p">)</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>    <span class="k">def</span> <span class="nf">set_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actiontype</span><span class="p">:</span> <span class="n">ActionType</span><span class="p">):</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">        Setter for the type of the action</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">actiontype</span><span class="o">.</span><span class="n">value</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">        Args:</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">            actiontype (Actiontype): The type of the action</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>    <span class="k">def</span> <span class="nf">set_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">        Setter for the action parameter</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        Args:</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">            param (int | float): The parameter of the action. Depends on the actiontype</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">                - Stay For (time in milliseconds),</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">                - Rotate Aircraft (angle in degrees),</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">                - Tilt Camera (angle in degrees)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">param</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        Clear action</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">NO_ACTION</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="k">def</span> <span class="nf">set_stay_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msec</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        Setter for &#39;Stay For&#39; action</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        Args:</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">            msec (int): Time to stay in milliseconds</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">STAY_FOR</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">msec</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="k">def</span> <span class="nf">set_take_photo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        Setter for &#39;Take Photo&#39; action</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">TAKE_PHOTO</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="k">def</span> <span class="nf">set_start_rec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        Setter for &#39;Start Recording&#39; action</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">START_RECORDING</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">        Raises:</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">            ValueError: If actiontype is no valid ActionType</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="p">(</span><span class="n">actiontype</span><span class="p">)</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>    <span class="k">def</span> <span class="nf">set_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        Setter for the action parameter</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        Args:</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">            param (int | float): The parameter of the action. Depends on the actiontype</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">                - Stay For (time in milliseconds),</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">                - Rotate Aircraft (angle in degrees),</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">                - Tilt Camera (angle in degrees)</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        Raises:</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">            ValueError: If param cannot be float</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        Clear action</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">NO_ACTION</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="k">def</span> <span class="nf">set_stay_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msec</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        Setter for &#39;Stay For&#39; action</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        Args:</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">            msec (int): Time to stay in milliseconds</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        Raises:</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">            ValueError: If msec cannot be int or msec &lt; 0 or msec &gt; 32000</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">msec</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">int</span><span class="p">(</span><span class="n">msec</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">32000</span><span class="p">:</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;allowed range is 0 to 32000&#39;</span><span class="p">)</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">STAY_FOR</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">msec</span><span class="p">)</span>
 </span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">def</span> <span class="nf">set_stop_rec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">def</span> <span class="nf">set_take_photo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        Setter for &#39;Stop Recording&#39; action</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        Setter for &#39;Take Photo&#39; action</span>
 </span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">STOP_RECORDING</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">TAKE_PHOTO</span>
 </span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">def</span> <span class="nf">set_rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">def</span> <span class="nf">set_start_rec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        Setter for &#39;Rotate Aircraft&#39; action</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">        Args:</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">            deg (int | float): Rotation in degrees</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        Setter for &#39;Start Recording&#39; action</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">START_RECORDING</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">ROTATE_AIRCRAFT</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">deg</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="k">def</span> <span class="nf">set_tilt_cam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">        Setter for &#39;Tilt Camera&#39; action</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">        Args:</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">            deg (int | float): Tiltangle in degrees</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">def</span> <span class="nf">set_stop_rec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">        Setter for &#39;Stop Recording&#39; action</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">STOP_RECORDING</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">def</span> <span class="nf">set_rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">        Setter for &#39;Rotate Aircraft&#39; action</span>
 </span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">TILT_CAMERA</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">deg</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">        Args:</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">            deg (int | float): Rotation in degrees</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">        Raises:</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">            ValueError: If deg cannot be float or deg &lt; 0 or deg &gt; 359</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">359</span><span class="p">:</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;allowed range is 0 to 359&#39;</span><span class="p">)</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">ROTATE_AIRCRAFT</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">def</span> <span class="nf">set_tilt_cam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">        Setter for &#39;Tilt Camera&#39; action</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">        Args:</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">            deg (int | float): Tiltangle in degrees</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">        Raises:</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">            ValueError: If deg cannot be float or deg &lt; -90 or deg &gt; 30</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">90</span> <span class="ow">or</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;allowed range is -90 to 30&#39;</span><span class="p">)</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">TILT_CAMERA</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -250,94 +274,118 @@ litchi_wp<wbr>.action    </h1>
 </span><span id="Action-35"><a href="#Action-35"><span class="linenos"> 35</span></a><span class="sd">                - Start Recording (set to 0)</span>
 </span><span id="Action-36"><a href="#Action-36"><span class="linenos"> 36</span></a><span class="sd">                - Stop Recording (set to 0)</span>
 </span><span id="Action-37"><a href="#Action-37"><span class="linenos"> 37</span></a>
-</span><span id="Action-38"><a href="#Action-38"><span class="linenos"> 38</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action-39"><a href="#Action-39"><span class="linenos"> 39</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">:</span> <span class="n">ActionType</span> <span class="o">=</span> <span class="n">actiontype</span>
-</span><span id="Action-40"><a href="#Action-40"><span class="linenos"> 40</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">param</span>
-</span><span id="Action-41"><a href="#Action-41"><span class="linenos"> 41</span></a>
-</span><span id="Action-42"><a href="#Action-42"><span class="linenos"> 42</span></a>    <span class="k">def</span> <span class="nf">set_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actiontype</span><span class="p">:</span> <span class="n">ActionType</span><span class="p">):</span>
-</span><span id="Action-43"><a href="#Action-43"><span class="linenos"> 43</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action-44"><a href="#Action-44"><span class="linenos"> 44</span></a><span class="sd">        Setter for the type of the action</span>
-</span><span id="Action-45"><a href="#Action-45"><span class="linenos"> 45</span></a>
-</span><span id="Action-46"><a href="#Action-46"><span class="linenos"> 46</span></a><span class="sd">        Args:</span>
-</span><span id="Action-47"><a href="#Action-47"><span class="linenos"> 47</span></a><span class="sd">            actiontype (Actiontype): The type of the action</span>
+</span><span id="Action-38"><a href="#Action-38"><span class="linenos"> 38</span></a><span class="sd">        Raises:</span>
+</span><span id="Action-39"><a href="#Action-39"><span class="linenos"> 39</span></a><span class="sd">            ValueError: If actiontype is no valid ActionType or param cannot be float</span>
+</span><span id="Action-40"><a href="#Action-40"><span class="linenos"> 40</span></a>
+</span><span id="Action-41"><a href="#Action-41"><span class="linenos"> 41</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action-42"><a href="#Action-42"><span class="linenos"> 42</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">:</span> <span class="n">ActionType</span> <span class="o">=</span> <span class="n">ActionType</span><span class="p">(</span><span class="n">actiontype</span><span class="p">)</span>
+</span><span id="Action-43"><a href="#Action-43"><span class="linenos"> 43</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+</span><span id="Action-44"><a href="#Action-44"><span class="linenos"> 44</span></a>
+</span><span id="Action-45"><a href="#Action-45"><span class="linenos"> 45</span></a>    <span class="k">def</span> <span class="nf">set_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actiontype</span><span class="p">:</span> <span class="n">ActionType</span><span class="p">):</span>
+</span><span id="Action-46"><a href="#Action-46"><span class="linenos"> 46</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action-47"><a href="#Action-47"><span class="linenos"> 47</span></a><span class="sd">        Setter for the type of the action</span>
 </span><span id="Action-48"><a href="#Action-48"><span class="linenos"> 48</span></a>
-</span><span id="Action-49"><a href="#Action-49"><span class="linenos"> 49</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action-50"><a href="#Action-50"><span class="linenos"> 50</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">actiontype</span><span class="o">.</span><span class="n">value</span>
+</span><span id="Action-49"><a href="#Action-49"><span class="linenos"> 49</span></a><span class="sd">        Args:</span>
+</span><span id="Action-50"><a href="#Action-50"><span class="linenos"> 50</span></a><span class="sd">            actiontype (Actiontype): The type of the action</span>
 </span><span id="Action-51"><a href="#Action-51"><span class="linenos"> 51</span></a>
-</span><span id="Action-52"><a href="#Action-52"><span class="linenos"> 52</span></a>    <span class="k">def</span> <span class="nf">set_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
-</span><span id="Action-53"><a href="#Action-53"><span class="linenos"> 53</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action-54"><a href="#Action-54"><span class="linenos"> 54</span></a><span class="sd">        Setter for the action parameter</span>
-</span><span id="Action-55"><a href="#Action-55"><span class="linenos"> 55</span></a>
-</span><span id="Action-56"><a href="#Action-56"><span class="linenos"> 56</span></a><span class="sd">        Args:</span>
-</span><span id="Action-57"><a href="#Action-57"><span class="linenos"> 57</span></a><span class="sd">            param (int | float): The parameter of the action. Depends on the actiontype</span>
-</span><span id="Action-58"><a href="#Action-58"><span class="linenos"> 58</span></a>
-</span><span id="Action-59"><a href="#Action-59"><span class="linenos"> 59</span></a><span class="sd">                - Stay For (time in milliseconds),</span>
-</span><span id="Action-60"><a href="#Action-60"><span class="linenos"> 60</span></a><span class="sd">                - Rotate Aircraft (angle in degrees),</span>
-</span><span id="Action-61"><a href="#Action-61"><span class="linenos"> 61</span></a><span class="sd">                - Tilt Camera (angle in degrees)</span>
-</span><span id="Action-62"><a href="#Action-62"><span class="linenos"> 62</span></a>
-</span><span id="Action-63"><a href="#Action-63"><span class="linenos"> 63</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action-64"><a href="#Action-64"><span class="linenos"> 64</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">param</span>
-</span><span id="Action-65"><a href="#Action-65"><span class="linenos"> 65</span></a>
-</span><span id="Action-66"><a href="#Action-66"><span class="linenos"> 66</span></a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Action-67"><a href="#Action-67"><span class="linenos"> 67</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action-68"><a href="#Action-68"><span class="linenos"> 68</span></a><span class="sd">        Clear action</span>
-</span><span id="Action-69"><a href="#Action-69"><span class="linenos"> 69</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action-70"><a href="#Action-70"><span class="linenos"> 70</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">NO_ACTION</span>
-</span><span id="Action-71"><a href="#Action-71"><span class="linenos"> 71</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span id="Action-72"><a href="#Action-72"><span class="linenos"> 72</span></a>
-</span><span id="Action-73"><a href="#Action-73"><span class="linenos"> 73</span></a>    <span class="k">def</span> <span class="nf">set_stay_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msec</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-</span><span id="Action-74"><a href="#Action-74"><span class="linenos"> 74</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action-75"><a href="#Action-75"><span class="linenos"> 75</span></a><span class="sd">        Setter for &#39;Stay For&#39; action</span>
-</span><span id="Action-76"><a href="#Action-76"><span class="linenos"> 76</span></a>
-</span><span id="Action-77"><a href="#Action-77"><span class="linenos"> 77</span></a><span class="sd">        Args:</span>
-</span><span id="Action-78"><a href="#Action-78"><span class="linenos"> 78</span></a><span class="sd">            msec (int): Time to stay in milliseconds</span>
-</span><span id="Action-79"><a href="#Action-79"><span class="linenos"> 79</span></a>
-</span><span id="Action-80"><a href="#Action-80"><span class="linenos"> 80</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action-81"><a href="#Action-81"><span class="linenos"> 81</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">STAY_FOR</span>
-</span><span id="Action-82"><a href="#Action-82"><span class="linenos"> 82</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">msec</span>
-</span><span id="Action-83"><a href="#Action-83"><span class="linenos"> 83</span></a>
-</span><span id="Action-84"><a href="#Action-84"><span class="linenos"> 84</span></a>    <span class="k">def</span> <span class="nf">set_take_photo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Action-85"><a href="#Action-85"><span class="linenos"> 85</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action-86"><a href="#Action-86"><span class="linenos"> 86</span></a><span class="sd">        Setter for &#39;Take Photo&#39; action</span>
-</span><span id="Action-87"><a href="#Action-87"><span class="linenos"> 87</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action-88"><a href="#Action-88"><span class="linenos"> 88</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">TAKE_PHOTO</span>
-</span><span id="Action-89"><a href="#Action-89"><span class="linenos"> 89</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span id="Action-90"><a href="#Action-90"><span class="linenos"> 90</span></a>
-</span><span id="Action-91"><a href="#Action-91"><span class="linenos"> 91</span></a>    <span class="k">def</span> <span class="nf">set_start_rec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Action-92"><a href="#Action-92"><span class="linenos"> 92</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action-93"><a href="#Action-93"><span class="linenos"> 93</span></a><span class="sd">        Setter for &#39;Start Recording&#39; action</span>
-</span><span id="Action-94"><a href="#Action-94"><span class="linenos"> 94</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action-95"><a href="#Action-95"><span class="linenos"> 95</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">START_RECORDING</span>
-</span><span id="Action-96"><a href="#Action-96"><span class="linenos"> 96</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="Action-52"><a href="#Action-52"><span class="linenos"> 52</span></a><span class="sd">        Raises:</span>
+</span><span id="Action-53"><a href="#Action-53"><span class="linenos"> 53</span></a><span class="sd">            ValueError: If actiontype is no valid ActionType</span>
+</span><span id="Action-54"><a href="#Action-54"><span class="linenos"> 54</span></a>
+</span><span id="Action-55"><a href="#Action-55"><span class="linenos"> 55</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action-56"><a href="#Action-56"><span class="linenos"> 56</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="p">(</span><span class="n">actiontype</span><span class="p">)</span>
+</span><span id="Action-57"><a href="#Action-57"><span class="linenos"> 57</span></a>
+</span><span id="Action-58"><a href="#Action-58"><span class="linenos"> 58</span></a>    <span class="k">def</span> <span class="nf">set_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="Action-59"><a href="#Action-59"><span class="linenos"> 59</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action-60"><a href="#Action-60"><span class="linenos"> 60</span></a><span class="sd">        Setter for the action parameter</span>
+</span><span id="Action-61"><a href="#Action-61"><span class="linenos"> 61</span></a>
+</span><span id="Action-62"><a href="#Action-62"><span class="linenos"> 62</span></a><span class="sd">        Args:</span>
+</span><span id="Action-63"><a href="#Action-63"><span class="linenos"> 63</span></a><span class="sd">            param (int | float): The parameter of the action. Depends on the actiontype</span>
+</span><span id="Action-64"><a href="#Action-64"><span class="linenos"> 64</span></a>
+</span><span id="Action-65"><a href="#Action-65"><span class="linenos"> 65</span></a><span class="sd">                - Stay For (time in milliseconds),</span>
+</span><span id="Action-66"><a href="#Action-66"><span class="linenos"> 66</span></a><span class="sd">                - Rotate Aircraft (angle in degrees),</span>
+</span><span id="Action-67"><a href="#Action-67"><span class="linenos"> 67</span></a><span class="sd">                - Tilt Camera (angle in degrees)</span>
+</span><span id="Action-68"><a href="#Action-68"><span class="linenos"> 68</span></a>
+</span><span id="Action-69"><a href="#Action-69"><span class="linenos"> 69</span></a><span class="sd">        Raises:</span>
+</span><span id="Action-70"><a href="#Action-70"><span class="linenos"> 70</span></a><span class="sd">            ValueError: If param cannot be float</span>
+</span><span id="Action-71"><a href="#Action-71"><span class="linenos"> 71</span></a>
+</span><span id="Action-72"><a href="#Action-72"><span class="linenos"> 72</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action-73"><a href="#Action-73"><span class="linenos"> 73</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+</span><span id="Action-74"><a href="#Action-74"><span class="linenos"> 74</span></a>
+</span><span id="Action-75"><a href="#Action-75"><span class="linenos"> 75</span></a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Action-76"><a href="#Action-76"><span class="linenos"> 76</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action-77"><a href="#Action-77"><span class="linenos"> 77</span></a><span class="sd">        Clear action</span>
+</span><span id="Action-78"><a href="#Action-78"><span class="linenos"> 78</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action-79"><a href="#Action-79"><span class="linenos"> 79</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">NO_ACTION</span>
+</span><span id="Action-80"><a href="#Action-80"><span class="linenos"> 80</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="Action-81"><a href="#Action-81"><span class="linenos"> 81</span></a>
+</span><span id="Action-82"><a href="#Action-82"><span class="linenos"> 82</span></a>    <span class="k">def</span> <span class="nf">set_stay_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msec</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span><span id="Action-83"><a href="#Action-83"><span class="linenos"> 83</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action-84"><a href="#Action-84"><span class="linenos"> 84</span></a><span class="sd">        Setter for &#39;Stay For&#39; action</span>
+</span><span id="Action-85"><a href="#Action-85"><span class="linenos"> 85</span></a>
+</span><span id="Action-86"><a href="#Action-86"><span class="linenos"> 86</span></a><span class="sd">        Args:</span>
+</span><span id="Action-87"><a href="#Action-87"><span class="linenos"> 87</span></a><span class="sd">            msec (int): Time to stay in milliseconds</span>
+</span><span id="Action-88"><a href="#Action-88"><span class="linenos"> 88</span></a>
+</span><span id="Action-89"><a href="#Action-89"><span class="linenos"> 89</span></a><span class="sd">        Raises:</span>
+</span><span id="Action-90"><a href="#Action-90"><span class="linenos"> 90</span></a><span class="sd">            ValueError: If msec cannot be int or msec &lt; 0 or msec &gt; 32000</span>
+</span><span id="Action-91"><a href="#Action-91"><span class="linenos"> 91</span></a>
+</span><span id="Action-92"><a href="#Action-92"><span class="linenos"> 92</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action-93"><a href="#Action-93"><span class="linenos"> 93</span></a>        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">msec</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">int</span><span class="p">(</span><span class="n">msec</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">32000</span><span class="p">:</span>
+</span><span id="Action-94"><a href="#Action-94"><span class="linenos"> 94</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;allowed range is 0 to 32000&#39;</span><span class="p">)</span>
+</span><span id="Action-95"><a href="#Action-95"><span class="linenos"> 95</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">STAY_FOR</span>
+</span><span id="Action-96"><a href="#Action-96"><span class="linenos"> 96</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">msec</span><span class="p">)</span>
 </span><span id="Action-97"><a href="#Action-97"><span class="linenos"> 97</span></a>
-</span><span id="Action-98"><a href="#Action-98"><span class="linenos"> 98</span></a>    <span class="k">def</span> <span class="nf">set_stop_rec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Action-98"><a href="#Action-98"><span class="linenos"> 98</span></a>    <span class="k">def</span> <span class="nf">set_take_photo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="Action-99"><a href="#Action-99"><span class="linenos"> 99</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action-100"><a href="#Action-100"><span class="linenos">100</span></a><span class="sd">        Setter for &#39;Stop Recording&#39; action</span>
+</span><span id="Action-100"><a href="#Action-100"><span class="linenos">100</span></a><span class="sd">        Setter for &#39;Take Photo&#39; action</span>
 </span><span id="Action-101"><a href="#Action-101"><span class="linenos">101</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action-102"><a href="#Action-102"><span class="linenos">102</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">STOP_RECORDING</span>
+</span><span id="Action-102"><a href="#Action-102"><span class="linenos">102</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">TAKE_PHOTO</span>
 </span><span id="Action-103"><a href="#Action-103"><span class="linenos">103</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span id="Action-104"><a href="#Action-104"><span class="linenos">104</span></a>
-</span><span id="Action-105"><a href="#Action-105"><span class="linenos">105</span></a>    <span class="k">def</span> <span class="nf">set_rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="Action-105"><a href="#Action-105"><span class="linenos">105</span></a>    <span class="k">def</span> <span class="nf">set_start_rec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="Action-106"><a href="#Action-106"><span class="linenos">106</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action-107"><a href="#Action-107"><span class="linenos">107</span></a><span class="sd">        Setter for &#39;Rotate Aircraft&#39; action</span>
-</span><span id="Action-108"><a href="#Action-108"><span class="linenos">108</span></a>
-</span><span id="Action-109"><a href="#Action-109"><span class="linenos">109</span></a><span class="sd">        Args:</span>
-</span><span id="Action-110"><a href="#Action-110"><span class="linenos">110</span></a><span class="sd">            deg (int | float): Rotation in degrees</span>
+</span><span id="Action-107"><a href="#Action-107"><span class="linenos">107</span></a><span class="sd">        Setter for &#39;Start Recording&#39; action</span>
+</span><span id="Action-108"><a href="#Action-108"><span class="linenos">108</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action-109"><a href="#Action-109"><span class="linenos">109</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">START_RECORDING</span>
+</span><span id="Action-110"><a href="#Action-110"><span class="linenos">110</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span id="Action-111"><a href="#Action-111"><span class="linenos">111</span></a>
-</span><span id="Action-112"><a href="#Action-112"><span class="linenos">112</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action-113"><a href="#Action-113"><span class="linenos">113</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">ROTATE_AIRCRAFT</span>
-</span><span id="Action-114"><a href="#Action-114"><span class="linenos">114</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">deg</span>
-</span><span id="Action-115"><a href="#Action-115"><span class="linenos">115</span></a>
-</span><span id="Action-116"><a href="#Action-116"><span class="linenos">116</span></a>    <span class="k">def</span> <span class="nf">set_tilt_cam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
-</span><span id="Action-117"><a href="#Action-117"><span class="linenos">117</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action-118"><a href="#Action-118"><span class="linenos">118</span></a><span class="sd">        Setter for &#39;Tilt Camera&#39; action</span>
-</span><span id="Action-119"><a href="#Action-119"><span class="linenos">119</span></a>
-</span><span id="Action-120"><a href="#Action-120"><span class="linenos">120</span></a><span class="sd">        Args:</span>
-</span><span id="Action-121"><a href="#Action-121"><span class="linenos">121</span></a><span class="sd">            deg (int | float): Tiltangle in degrees</span>
+</span><span id="Action-112"><a href="#Action-112"><span class="linenos">112</span></a>    <span class="k">def</span> <span class="nf">set_stop_rec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Action-113"><a href="#Action-113"><span class="linenos">113</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action-114"><a href="#Action-114"><span class="linenos">114</span></a><span class="sd">        Setter for &#39;Stop Recording&#39; action</span>
+</span><span id="Action-115"><a href="#Action-115"><span class="linenos">115</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action-116"><a href="#Action-116"><span class="linenos">116</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">STOP_RECORDING</span>
+</span><span id="Action-117"><a href="#Action-117"><span class="linenos">117</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="Action-118"><a href="#Action-118"><span class="linenos">118</span></a>
+</span><span id="Action-119"><a href="#Action-119"><span class="linenos">119</span></a>    <span class="k">def</span> <span class="nf">set_rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="Action-120"><a href="#Action-120"><span class="linenos">120</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action-121"><a href="#Action-121"><span class="linenos">121</span></a><span class="sd">        Setter for &#39;Rotate Aircraft&#39; action</span>
 </span><span id="Action-122"><a href="#Action-122"><span class="linenos">122</span></a>
-</span><span id="Action-123"><a href="#Action-123"><span class="linenos">123</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action-124"><a href="#Action-124"><span class="linenos">124</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">TILT_CAMERA</span>
-</span><span id="Action-125"><a href="#Action-125"><span class="linenos">125</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">deg</span>
+</span><span id="Action-123"><a href="#Action-123"><span class="linenos">123</span></a><span class="sd">        Args:</span>
+</span><span id="Action-124"><a href="#Action-124"><span class="linenos">124</span></a><span class="sd">            deg (int | float): Rotation in degrees</span>
+</span><span id="Action-125"><a href="#Action-125"><span class="linenos">125</span></a>
+</span><span id="Action-126"><a href="#Action-126"><span class="linenos">126</span></a><span class="sd">        Raises:</span>
+</span><span id="Action-127"><a href="#Action-127"><span class="linenos">127</span></a><span class="sd">            ValueError: If deg cannot be float or deg &lt; 0 or deg &gt; 359</span>
+</span><span id="Action-128"><a href="#Action-128"><span class="linenos">128</span></a>
+</span><span id="Action-129"><a href="#Action-129"><span class="linenos">129</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action-130"><a href="#Action-130"><span class="linenos">130</span></a>        <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">359</span><span class="p">:</span>
+</span><span id="Action-131"><a href="#Action-131"><span class="linenos">131</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;allowed range is 0 to 359&#39;</span><span class="p">)</span>
+</span><span id="Action-132"><a href="#Action-132"><span class="linenos">132</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">ROTATE_AIRCRAFT</span>
+</span><span id="Action-133"><a href="#Action-133"><span class="linenos">133</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>
+</span><span id="Action-134"><a href="#Action-134"><span class="linenos">134</span></a>
+</span><span id="Action-135"><a href="#Action-135"><span class="linenos">135</span></a>    <span class="k">def</span> <span class="nf">set_tilt_cam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="Action-136"><a href="#Action-136"><span class="linenos">136</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action-137"><a href="#Action-137"><span class="linenos">137</span></a><span class="sd">        Setter for &#39;Tilt Camera&#39; action</span>
+</span><span id="Action-138"><a href="#Action-138"><span class="linenos">138</span></a>
+</span><span id="Action-139"><a href="#Action-139"><span class="linenos">139</span></a><span class="sd">        Args:</span>
+</span><span id="Action-140"><a href="#Action-140"><span class="linenos">140</span></a><span class="sd">            deg (int | float): Tiltangle in degrees</span>
+</span><span id="Action-141"><a href="#Action-141"><span class="linenos">141</span></a>
+</span><span id="Action-142"><a href="#Action-142"><span class="linenos">142</span></a><span class="sd">        Raises:</span>
+</span><span id="Action-143"><a href="#Action-143"><span class="linenos">143</span></a><span class="sd">            ValueError: If deg cannot be float or deg &lt; -90 or deg &gt; 30</span>
+</span><span id="Action-144"><a href="#Action-144"><span class="linenos">144</span></a>
+</span><span id="Action-145"><a href="#Action-145"><span class="linenos">145</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action-146"><a href="#Action-146"><span class="linenos">146</span></a>        <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">90</span> <span class="ow">or</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
+</span><span id="Action-147"><a href="#Action-147"><span class="linenos">147</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;allowed range is -90 to 30&#39;</span><span class="p">)</span>
+</span><span id="Action-148"><a href="#Action-148"><span class="linenos">148</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">TILT_CAMERA</span>
+</span><span id="Action-149"><a href="#Action-149"><span class="linenos">149</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -356,7 +404,7 @@ litchi_wp<wbr>.action    </h1>
                                         <input id="Action.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
-        <span class="name">Action</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">actiontype</span><span class="p">:</span> <span class="n">litchi_wp</span><span class="o">.</span><span class="n">enums</span><span class="o">.</span><span class="n">ActionType</span> <span class="o">=</span> <span class="bp">Ellipsis</span>,</span><span class="param">	<span class="n">param</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="bp">Ellipsis</span></span>)</span>
+        <span class="name">Action</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">actiontype</span><span class="p">:</span> <span class="n">litchi_wp</span><span class="o">.</span><span class="n">enums</span><span class="o">.</span><span class="n">ActionType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">ActionType</span><span class="o">.</span><span class="n">NO_ACTION</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span>,</span><span class="param">	<span class="n">param</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span></span>)</span>
 
                 <label class="view-source-button" for="Action.__init__-view-source"><span>View Source</span></label>
 
@@ -381,9 +429,12 @@ litchi_wp<wbr>.action    </h1>
 </span><span id="Action.__init__-35"><a href="#Action.__init__-35"><span class="linenos">35</span></a><span class="sd">                - Start Recording (set to 0)</span>
 </span><span id="Action.__init__-36"><a href="#Action.__init__-36"><span class="linenos">36</span></a><span class="sd">                - Stop Recording (set to 0)</span>
 </span><span id="Action.__init__-37"><a href="#Action.__init__-37"><span class="linenos">37</span></a>
-</span><span id="Action.__init__-38"><a href="#Action.__init__-38"><span class="linenos">38</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action.__init__-39"><a href="#Action.__init__-39"><span class="linenos">39</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">:</span> <span class="n">ActionType</span> <span class="o">=</span> <span class="n">actiontype</span>
-</span><span id="Action.__init__-40"><a href="#Action.__init__-40"><span class="linenos">40</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">param</span>
+</span><span id="Action.__init__-38"><a href="#Action.__init__-38"><span class="linenos">38</span></a><span class="sd">        Raises:</span>
+</span><span id="Action.__init__-39"><a href="#Action.__init__-39"><span class="linenos">39</span></a><span class="sd">            ValueError: If actiontype is no valid ActionType or param cannot be float</span>
+</span><span id="Action.__init__-40"><a href="#Action.__init__-40"><span class="linenos">40</span></a>
+</span><span id="Action.__init__-41"><a href="#Action.__init__-41"><span class="linenos">41</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action.__init__-42"><a href="#Action.__init__-42"><span class="linenos">42</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">:</span> <span class="n">ActionType</span> <span class="o">=</span> <span class="n">ActionType</span><span class="p">(</span><span class="n">actiontype</span><span class="p">)</span>
+</span><span id="Action.__init__-43"><a href="#Action.__init__-43"><span class="linenos">43</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -404,6 +455,12 @@ litchi_wp<wbr>.action    </h1>
 <li>Stop Recording (set to 0)</li>
 </ul></li>
 </ul>
+
+<h6 id="raises">Raises:</h6>
+
+<ul>
+<li><strong>ValueError:</strong>  If actiontype is no valid ActionType or param cannot be float</li>
+</ul>
 </div>
 
 
@@ -419,15 +476,18 @@ litchi_wp<wbr>.action    </h1>
 
     </div>
     <a class="headerlink" href="#Action.set_type"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_type-42"><a href="#Action.set_type-42"><span class="linenos">42</span></a>    <span class="k">def</span> <span class="nf">set_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actiontype</span><span class="p">:</span> <span class="n">ActionType</span><span class="p">):</span>
-</span><span id="Action.set_type-43"><a href="#Action.set_type-43"><span class="linenos">43</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action.set_type-44"><a href="#Action.set_type-44"><span class="linenos">44</span></a><span class="sd">        Setter for the type of the action</span>
-</span><span id="Action.set_type-45"><a href="#Action.set_type-45"><span class="linenos">45</span></a>
-</span><span id="Action.set_type-46"><a href="#Action.set_type-46"><span class="linenos">46</span></a><span class="sd">        Args:</span>
-</span><span id="Action.set_type-47"><a href="#Action.set_type-47"><span class="linenos">47</span></a><span class="sd">            actiontype (Actiontype): The type of the action</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_type-45"><a href="#Action.set_type-45"><span class="linenos">45</span></a>    <span class="k">def</span> <span class="nf">set_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actiontype</span><span class="p">:</span> <span class="n">ActionType</span><span class="p">):</span>
+</span><span id="Action.set_type-46"><a href="#Action.set_type-46"><span class="linenos">46</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action.set_type-47"><a href="#Action.set_type-47"><span class="linenos">47</span></a><span class="sd">        Setter for the type of the action</span>
 </span><span id="Action.set_type-48"><a href="#Action.set_type-48"><span class="linenos">48</span></a>
-</span><span id="Action.set_type-49"><a href="#Action.set_type-49"><span class="linenos">49</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action.set_type-50"><a href="#Action.set_type-50"><span class="linenos">50</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">actiontype</span><span class="o">.</span><span class="n">value</span>
+</span><span id="Action.set_type-49"><a href="#Action.set_type-49"><span class="linenos">49</span></a><span class="sd">        Args:</span>
+</span><span id="Action.set_type-50"><a href="#Action.set_type-50"><span class="linenos">50</span></a><span class="sd">            actiontype (Actiontype): The type of the action</span>
+</span><span id="Action.set_type-51"><a href="#Action.set_type-51"><span class="linenos">51</span></a>
+</span><span id="Action.set_type-52"><a href="#Action.set_type-52"><span class="linenos">52</span></a><span class="sd">        Raises:</span>
+</span><span id="Action.set_type-53"><a href="#Action.set_type-53"><span class="linenos">53</span></a><span class="sd">            ValueError: If actiontype is no valid ActionType</span>
+</span><span id="Action.set_type-54"><a href="#Action.set_type-54"><span class="linenos">54</span></a>
+</span><span id="Action.set_type-55"><a href="#Action.set_type-55"><span class="linenos">55</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action.set_type-56"><a href="#Action.set_type-56"><span class="linenos">56</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="p">(</span><span class="n">actiontype</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -437,6 +497,12 @@ litchi_wp<wbr>.action    </h1>
 
 <ul>
 <li><strong>actiontype (Actiontype):</strong>  The type of the action</li>
+</ul>
+
+<h6 id="raises">Raises:</h6>
+
+<ul>
+<li><strong>ValueError:</strong>  If actiontype is no valid ActionType</li>
 </ul>
 </div>
 
@@ -453,19 +519,22 @@ litchi_wp<wbr>.action    </h1>
 
     </div>
     <a class="headerlink" href="#Action.set_param"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_param-52"><a href="#Action.set_param-52"><span class="linenos">52</span></a>    <span class="k">def</span> <span class="nf">set_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
-</span><span id="Action.set_param-53"><a href="#Action.set_param-53"><span class="linenos">53</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action.set_param-54"><a href="#Action.set_param-54"><span class="linenos">54</span></a><span class="sd">        Setter for the action parameter</span>
-</span><span id="Action.set_param-55"><a href="#Action.set_param-55"><span class="linenos">55</span></a>
-</span><span id="Action.set_param-56"><a href="#Action.set_param-56"><span class="linenos">56</span></a><span class="sd">        Args:</span>
-</span><span id="Action.set_param-57"><a href="#Action.set_param-57"><span class="linenos">57</span></a><span class="sd">            param (int | float): The parameter of the action. Depends on the actiontype</span>
-</span><span id="Action.set_param-58"><a href="#Action.set_param-58"><span class="linenos">58</span></a>
-</span><span id="Action.set_param-59"><a href="#Action.set_param-59"><span class="linenos">59</span></a><span class="sd">                - Stay For (time in milliseconds),</span>
-</span><span id="Action.set_param-60"><a href="#Action.set_param-60"><span class="linenos">60</span></a><span class="sd">                - Rotate Aircraft (angle in degrees),</span>
-</span><span id="Action.set_param-61"><a href="#Action.set_param-61"><span class="linenos">61</span></a><span class="sd">                - Tilt Camera (angle in degrees)</span>
-</span><span id="Action.set_param-62"><a href="#Action.set_param-62"><span class="linenos">62</span></a>
-</span><span id="Action.set_param-63"><a href="#Action.set_param-63"><span class="linenos">63</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action.set_param-64"><a href="#Action.set_param-64"><span class="linenos">64</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">param</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_param-58"><a href="#Action.set_param-58"><span class="linenos">58</span></a>    <span class="k">def</span> <span class="nf">set_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="Action.set_param-59"><a href="#Action.set_param-59"><span class="linenos">59</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action.set_param-60"><a href="#Action.set_param-60"><span class="linenos">60</span></a><span class="sd">        Setter for the action parameter</span>
+</span><span id="Action.set_param-61"><a href="#Action.set_param-61"><span class="linenos">61</span></a>
+</span><span id="Action.set_param-62"><a href="#Action.set_param-62"><span class="linenos">62</span></a><span class="sd">        Args:</span>
+</span><span id="Action.set_param-63"><a href="#Action.set_param-63"><span class="linenos">63</span></a><span class="sd">            param (int | float): The parameter of the action. Depends on the actiontype</span>
+</span><span id="Action.set_param-64"><a href="#Action.set_param-64"><span class="linenos">64</span></a>
+</span><span id="Action.set_param-65"><a href="#Action.set_param-65"><span class="linenos">65</span></a><span class="sd">                - Stay For (time in milliseconds),</span>
+</span><span id="Action.set_param-66"><a href="#Action.set_param-66"><span class="linenos">66</span></a><span class="sd">                - Rotate Aircraft (angle in degrees),</span>
+</span><span id="Action.set_param-67"><a href="#Action.set_param-67"><span class="linenos">67</span></a><span class="sd">                - Tilt Camera (angle in degrees)</span>
+</span><span id="Action.set_param-68"><a href="#Action.set_param-68"><span class="linenos">68</span></a>
+</span><span id="Action.set_param-69"><a href="#Action.set_param-69"><span class="linenos">69</span></a><span class="sd">        Raises:</span>
+</span><span id="Action.set_param-70"><a href="#Action.set_param-70"><span class="linenos">70</span></a><span class="sd">            ValueError: If param cannot be float</span>
+</span><span id="Action.set_param-71"><a href="#Action.set_param-71"><span class="linenos">71</span></a>
+</span><span id="Action.set_param-72"><a href="#Action.set_param-72"><span class="linenos">72</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action.set_param-73"><a href="#Action.set_param-73"><span class="linenos">73</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -482,6 +551,12 @@ litchi_wp<wbr>.action    </h1>
 <li>Tilt Camera (angle in degrees)</li>
 </ul></li>
 </ul>
+
+<h6 id="raises">Raises:</h6>
+
+<ul>
+<li><strong>ValueError:</strong>  If param cannot be float</li>
+</ul>
 </div>
 
 
@@ -497,12 +572,12 @@ litchi_wp<wbr>.action    </h1>
 
     </div>
     <a class="headerlink" href="#Action.delete"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.delete-66"><a href="#Action.delete-66"><span class="linenos">66</span></a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Action.delete-67"><a href="#Action.delete-67"><span class="linenos">67</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action.delete-68"><a href="#Action.delete-68"><span class="linenos">68</span></a><span class="sd">        Clear action</span>
-</span><span id="Action.delete-69"><a href="#Action.delete-69"><span class="linenos">69</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action.delete-70"><a href="#Action.delete-70"><span class="linenos">70</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">NO_ACTION</span>
-</span><span id="Action.delete-71"><a href="#Action.delete-71"><span class="linenos">71</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.delete-75"><a href="#Action.delete-75"><span class="linenos">75</span></a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Action.delete-76"><a href="#Action.delete-76"><span class="linenos">76</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action.delete-77"><a href="#Action.delete-77"><span class="linenos">77</span></a><span class="sd">        Clear action</span>
+</span><span id="Action.delete-78"><a href="#Action.delete-78"><span class="linenos">78</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action.delete-79"><a href="#Action.delete-79"><span class="linenos">79</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">NO_ACTION</span>
+</span><span id="Action.delete-80"><a href="#Action.delete-80"><span class="linenos">80</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
 </span></pre></div>
 
 
@@ -522,16 +597,21 @@ litchi_wp<wbr>.action    </h1>
 
     </div>
     <a class="headerlink" href="#Action.set_stay_for"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_stay_for-73"><a href="#Action.set_stay_for-73"><span class="linenos">73</span></a>    <span class="k">def</span> <span class="nf">set_stay_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msec</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-</span><span id="Action.set_stay_for-74"><a href="#Action.set_stay_for-74"><span class="linenos">74</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action.set_stay_for-75"><a href="#Action.set_stay_for-75"><span class="linenos">75</span></a><span class="sd">        Setter for &#39;Stay For&#39; action</span>
-</span><span id="Action.set_stay_for-76"><a href="#Action.set_stay_for-76"><span class="linenos">76</span></a>
-</span><span id="Action.set_stay_for-77"><a href="#Action.set_stay_for-77"><span class="linenos">77</span></a><span class="sd">        Args:</span>
-</span><span id="Action.set_stay_for-78"><a href="#Action.set_stay_for-78"><span class="linenos">78</span></a><span class="sd">            msec (int): Time to stay in milliseconds</span>
-</span><span id="Action.set_stay_for-79"><a href="#Action.set_stay_for-79"><span class="linenos">79</span></a>
-</span><span id="Action.set_stay_for-80"><a href="#Action.set_stay_for-80"><span class="linenos">80</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action.set_stay_for-81"><a href="#Action.set_stay_for-81"><span class="linenos">81</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">STAY_FOR</span>
-</span><span id="Action.set_stay_for-82"><a href="#Action.set_stay_for-82"><span class="linenos">82</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">msec</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_stay_for-82"><a href="#Action.set_stay_for-82"><span class="linenos">82</span></a>    <span class="k">def</span> <span class="nf">set_stay_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msec</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span><span id="Action.set_stay_for-83"><a href="#Action.set_stay_for-83"><span class="linenos">83</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action.set_stay_for-84"><a href="#Action.set_stay_for-84"><span class="linenos">84</span></a><span class="sd">        Setter for &#39;Stay For&#39; action</span>
+</span><span id="Action.set_stay_for-85"><a href="#Action.set_stay_for-85"><span class="linenos">85</span></a>
+</span><span id="Action.set_stay_for-86"><a href="#Action.set_stay_for-86"><span class="linenos">86</span></a><span class="sd">        Args:</span>
+</span><span id="Action.set_stay_for-87"><a href="#Action.set_stay_for-87"><span class="linenos">87</span></a><span class="sd">            msec (int): Time to stay in milliseconds</span>
+</span><span id="Action.set_stay_for-88"><a href="#Action.set_stay_for-88"><span class="linenos">88</span></a>
+</span><span id="Action.set_stay_for-89"><a href="#Action.set_stay_for-89"><span class="linenos">89</span></a><span class="sd">        Raises:</span>
+</span><span id="Action.set_stay_for-90"><a href="#Action.set_stay_for-90"><span class="linenos">90</span></a><span class="sd">            ValueError: If msec cannot be int or msec &lt; 0 or msec &gt; 32000</span>
+</span><span id="Action.set_stay_for-91"><a href="#Action.set_stay_for-91"><span class="linenos">91</span></a>
+</span><span id="Action.set_stay_for-92"><a href="#Action.set_stay_for-92"><span class="linenos">92</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action.set_stay_for-93"><a href="#Action.set_stay_for-93"><span class="linenos">93</span></a>        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">msec</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">int</span><span class="p">(</span><span class="n">msec</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">32000</span><span class="p">:</span>
+</span><span id="Action.set_stay_for-94"><a href="#Action.set_stay_for-94"><span class="linenos">94</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;allowed range is 0 to 32000&#39;</span><span class="p">)</span>
+</span><span id="Action.set_stay_for-95"><a href="#Action.set_stay_for-95"><span class="linenos">95</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">STAY_FOR</span>
+</span><span id="Action.set_stay_for-96"><a href="#Action.set_stay_for-96"><span class="linenos">96</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">msec</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -541,6 +621,12 @@ litchi_wp<wbr>.action    </h1>
 
 <ul>
 <li><strong>msec (int):</strong>  Time to stay in milliseconds</li>
+</ul>
+
+<h6 id="raises">Raises:</h6>
+
+<ul>
+<li><strong>ValueError:</strong>  If msec cannot be int or msec &lt; 0 or msec &gt; 32000</li>
 </ul>
 </div>
 
@@ -557,12 +643,12 @@ litchi_wp<wbr>.action    </h1>
 
     </div>
     <a class="headerlink" href="#Action.set_take_photo"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_take_photo-84"><a href="#Action.set_take_photo-84"><span class="linenos">84</span></a>    <span class="k">def</span> <span class="nf">set_take_photo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Action.set_take_photo-85"><a href="#Action.set_take_photo-85"><span class="linenos">85</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action.set_take_photo-86"><a href="#Action.set_take_photo-86"><span class="linenos">86</span></a><span class="sd">        Setter for &#39;Take Photo&#39; action</span>
-</span><span id="Action.set_take_photo-87"><a href="#Action.set_take_photo-87"><span class="linenos">87</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action.set_take_photo-88"><a href="#Action.set_take_photo-88"><span class="linenos">88</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">TAKE_PHOTO</span>
-</span><span id="Action.set_take_photo-89"><a href="#Action.set_take_photo-89"><span class="linenos">89</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_take_photo-98"><a href="#Action.set_take_photo-98"><span class="linenos"> 98</span></a>    <span class="k">def</span> <span class="nf">set_take_photo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Action.set_take_photo-99"><a href="#Action.set_take_photo-99"><span class="linenos"> 99</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action.set_take_photo-100"><a href="#Action.set_take_photo-100"><span class="linenos">100</span></a><span class="sd">        Setter for &#39;Take Photo&#39; action</span>
+</span><span id="Action.set_take_photo-101"><a href="#Action.set_take_photo-101"><span class="linenos">101</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action.set_take_photo-102"><a href="#Action.set_take_photo-102"><span class="linenos">102</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">TAKE_PHOTO</span>
+</span><span id="Action.set_take_photo-103"><a href="#Action.set_take_photo-103"><span class="linenos">103</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
 </span></pre></div>
 
 
@@ -582,12 +668,12 @@ litchi_wp<wbr>.action    </h1>
 
     </div>
     <a class="headerlink" href="#Action.set_start_rec"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_start_rec-91"><a href="#Action.set_start_rec-91"><span class="linenos">91</span></a>    <span class="k">def</span> <span class="nf">set_start_rec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Action.set_start_rec-92"><a href="#Action.set_start_rec-92"><span class="linenos">92</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action.set_start_rec-93"><a href="#Action.set_start_rec-93"><span class="linenos">93</span></a><span class="sd">        Setter for &#39;Start Recording&#39; action</span>
-</span><span id="Action.set_start_rec-94"><a href="#Action.set_start_rec-94"><span class="linenos">94</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action.set_start_rec-95"><a href="#Action.set_start_rec-95"><span class="linenos">95</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">START_RECORDING</span>
-</span><span id="Action.set_start_rec-96"><a href="#Action.set_start_rec-96"><span class="linenos">96</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_start_rec-105"><a href="#Action.set_start_rec-105"><span class="linenos">105</span></a>    <span class="k">def</span> <span class="nf">set_start_rec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Action.set_start_rec-106"><a href="#Action.set_start_rec-106"><span class="linenos">106</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action.set_start_rec-107"><a href="#Action.set_start_rec-107"><span class="linenos">107</span></a><span class="sd">        Setter for &#39;Start Recording&#39; action</span>
+</span><span id="Action.set_start_rec-108"><a href="#Action.set_start_rec-108"><span class="linenos">108</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action.set_start_rec-109"><a href="#Action.set_start_rec-109"><span class="linenos">109</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">START_RECORDING</span>
+</span><span id="Action.set_start_rec-110"><a href="#Action.set_start_rec-110"><span class="linenos">110</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
 </span></pre></div>
 
 
@@ -607,12 +693,12 @@ litchi_wp<wbr>.action    </h1>
 
     </div>
     <a class="headerlink" href="#Action.set_stop_rec"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_stop_rec-98"><a href="#Action.set_stop_rec-98"><span class="linenos"> 98</span></a>    <span class="k">def</span> <span class="nf">set_stop_rec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Action.set_stop_rec-99"><a href="#Action.set_stop_rec-99"><span class="linenos"> 99</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action.set_stop_rec-100"><a href="#Action.set_stop_rec-100"><span class="linenos">100</span></a><span class="sd">        Setter for &#39;Stop Recording&#39; action</span>
-</span><span id="Action.set_stop_rec-101"><a href="#Action.set_stop_rec-101"><span class="linenos">101</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action.set_stop_rec-102"><a href="#Action.set_stop_rec-102"><span class="linenos">102</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">STOP_RECORDING</span>
-</span><span id="Action.set_stop_rec-103"><a href="#Action.set_stop_rec-103"><span class="linenos">103</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_stop_rec-112"><a href="#Action.set_stop_rec-112"><span class="linenos">112</span></a>    <span class="k">def</span> <span class="nf">set_stop_rec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Action.set_stop_rec-113"><a href="#Action.set_stop_rec-113"><span class="linenos">113</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action.set_stop_rec-114"><a href="#Action.set_stop_rec-114"><span class="linenos">114</span></a><span class="sd">        Setter for &#39;Stop Recording&#39; action</span>
+</span><span id="Action.set_stop_rec-115"><a href="#Action.set_stop_rec-115"><span class="linenos">115</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action.set_stop_rec-116"><a href="#Action.set_stop_rec-116"><span class="linenos">116</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">STOP_RECORDING</span>
+</span><span id="Action.set_stop_rec-117"><a href="#Action.set_stop_rec-117"><span class="linenos">117</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="mi">0</span>
 </span></pre></div>
 
 
@@ -632,16 +718,21 @@ litchi_wp<wbr>.action    </h1>
 
     </div>
     <a class="headerlink" href="#Action.set_rotate"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_rotate-105"><a href="#Action.set_rotate-105"><span class="linenos">105</span></a>    <span class="k">def</span> <span class="nf">set_rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
-</span><span id="Action.set_rotate-106"><a href="#Action.set_rotate-106"><span class="linenos">106</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action.set_rotate-107"><a href="#Action.set_rotate-107"><span class="linenos">107</span></a><span class="sd">        Setter for &#39;Rotate Aircraft&#39; action</span>
-</span><span id="Action.set_rotate-108"><a href="#Action.set_rotate-108"><span class="linenos">108</span></a>
-</span><span id="Action.set_rotate-109"><a href="#Action.set_rotate-109"><span class="linenos">109</span></a><span class="sd">        Args:</span>
-</span><span id="Action.set_rotate-110"><a href="#Action.set_rotate-110"><span class="linenos">110</span></a><span class="sd">            deg (int | float): Rotation in degrees</span>
-</span><span id="Action.set_rotate-111"><a href="#Action.set_rotate-111"><span class="linenos">111</span></a>
-</span><span id="Action.set_rotate-112"><a href="#Action.set_rotate-112"><span class="linenos">112</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action.set_rotate-113"><a href="#Action.set_rotate-113"><span class="linenos">113</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">ROTATE_AIRCRAFT</span>
-</span><span id="Action.set_rotate-114"><a href="#Action.set_rotate-114"><span class="linenos">114</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">deg</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_rotate-119"><a href="#Action.set_rotate-119"><span class="linenos">119</span></a>    <span class="k">def</span> <span class="nf">set_rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="Action.set_rotate-120"><a href="#Action.set_rotate-120"><span class="linenos">120</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action.set_rotate-121"><a href="#Action.set_rotate-121"><span class="linenos">121</span></a><span class="sd">        Setter for &#39;Rotate Aircraft&#39; action</span>
+</span><span id="Action.set_rotate-122"><a href="#Action.set_rotate-122"><span class="linenos">122</span></a>
+</span><span id="Action.set_rotate-123"><a href="#Action.set_rotate-123"><span class="linenos">123</span></a><span class="sd">        Args:</span>
+</span><span id="Action.set_rotate-124"><a href="#Action.set_rotate-124"><span class="linenos">124</span></a><span class="sd">            deg (int | float): Rotation in degrees</span>
+</span><span id="Action.set_rotate-125"><a href="#Action.set_rotate-125"><span class="linenos">125</span></a>
+</span><span id="Action.set_rotate-126"><a href="#Action.set_rotate-126"><span class="linenos">126</span></a><span class="sd">        Raises:</span>
+</span><span id="Action.set_rotate-127"><a href="#Action.set_rotate-127"><span class="linenos">127</span></a><span class="sd">            ValueError: If deg cannot be float or deg &lt; 0 or deg &gt; 359</span>
+</span><span id="Action.set_rotate-128"><a href="#Action.set_rotate-128"><span class="linenos">128</span></a>
+</span><span id="Action.set_rotate-129"><a href="#Action.set_rotate-129"><span class="linenos">129</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action.set_rotate-130"><a href="#Action.set_rotate-130"><span class="linenos">130</span></a>        <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">359</span><span class="p">:</span>
+</span><span id="Action.set_rotate-131"><a href="#Action.set_rotate-131"><span class="linenos">131</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;allowed range is 0 to 359&#39;</span><span class="p">)</span>
+</span><span id="Action.set_rotate-132"><a href="#Action.set_rotate-132"><span class="linenos">132</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">ROTATE_AIRCRAFT</span>
+</span><span id="Action.set_rotate-133"><a href="#Action.set_rotate-133"><span class="linenos">133</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -651,6 +742,12 @@ litchi_wp<wbr>.action    </h1>
 
 <ul>
 <li><strong>deg (int | float):</strong>  Rotation in degrees</li>
+</ul>
+
+<h6 id="raises">Raises:</h6>
+
+<ul>
+<li><strong>ValueError:</strong>  If deg cannot be float or deg &lt; 0 or deg &gt; 359</li>
 </ul>
 </div>
 
@@ -667,16 +764,21 @@ litchi_wp<wbr>.action    </h1>
 
     </div>
     <a class="headerlink" href="#Action.set_tilt_cam"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_tilt_cam-116"><a href="#Action.set_tilt_cam-116"><span class="linenos">116</span></a>    <span class="k">def</span> <span class="nf">set_tilt_cam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
-</span><span id="Action.set_tilt_cam-117"><a href="#Action.set_tilt_cam-117"><span class="linenos">117</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Action.set_tilt_cam-118"><a href="#Action.set_tilt_cam-118"><span class="linenos">118</span></a><span class="sd">        Setter for &#39;Tilt Camera&#39; action</span>
-</span><span id="Action.set_tilt_cam-119"><a href="#Action.set_tilt_cam-119"><span class="linenos">119</span></a>
-</span><span id="Action.set_tilt_cam-120"><a href="#Action.set_tilt_cam-120"><span class="linenos">120</span></a><span class="sd">        Args:</span>
-</span><span id="Action.set_tilt_cam-121"><a href="#Action.set_tilt_cam-121"><span class="linenos">121</span></a><span class="sd">            deg (int | float): Tiltangle in degrees</span>
-</span><span id="Action.set_tilt_cam-122"><a href="#Action.set_tilt_cam-122"><span class="linenos">122</span></a>
-</span><span id="Action.set_tilt_cam-123"><a href="#Action.set_tilt_cam-123"><span class="linenos">123</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Action.set_tilt_cam-124"><a href="#Action.set_tilt_cam-124"><span class="linenos">124</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">TILT_CAMERA</span>
-</span><span id="Action.set_tilt_cam-125"><a href="#Action.set_tilt_cam-125"><span class="linenos">125</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">deg</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Action.set_tilt_cam-135"><a href="#Action.set_tilt_cam-135"><span class="linenos">135</span></a>    <span class="k">def</span> <span class="nf">set_tilt_cam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="Action.set_tilt_cam-136"><a href="#Action.set_tilt_cam-136"><span class="linenos">136</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Action.set_tilt_cam-137"><a href="#Action.set_tilt_cam-137"><span class="linenos">137</span></a><span class="sd">        Setter for &#39;Tilt Camera&#39; action</span>
+</span><span id="Action.set_tilt_cam-138"><a href="#Action.set_tilt_cam-138"><span class="linenos">138</span></a>
+</span><span id="Action.set_tilt_cam-139"><a href="#Action.set_tilt_cam-139"><span class="linenos">139</span></a><span class="sd">        Args:</span>
+</span><span id="Action.set_tilt_cam-140"><a href="#Action.set_tilt_cam-140"><span class="linenos">140</span></a><span class="sd">            deg (int | float): Tiltangle in degrees</span>
+</span><span id="Action.set_tilt_cam-141"><a href="#Action.set_tilt_cam-141"><span class="linenos">141</span></a>
+</span><span id="Action.set_tilt_cam-142"><a href="#Action.set_tilt_cam-142"><span class="linenos">142</span></a><span class="sd">        Raises:</span>
+</span><span id="Action.set_tilt_cam-143"><a href="#Action.set_tilt_cam-143"><span class="linenos">143</span></a><span class="sd">            ValueError: If deg cannot be float or deg &lt; -90 or deg &gt; 30</span>
+</span><span id="Action.set_tilt_cam-144"><a href="#Action.set_tilt_cam-144"><span class="linenos">144</span></a>
+</span><span id="Action.set_tilt_cam-145"><a href="#Action.set_tilt_cam-145"><span class="linenos">145</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Action.set_tilt_cam-146"><a href="#Action.set_tilt_cam-146"><span class="linenos">146</span></a>        <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">90</span> <span class="ow">or</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
+</span><span id="Action.set_tilt_cam-147"><a href="#Action.set_tilt_cam-147"><span class="linenos">147</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;allowed range is -90 to 30&#39;</span><span class="p">)</span>
+</span><span id="Action.set_tilt_cam-148"><a href="#Action.set_tilt_cam-148"><span class="linenos">148</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ActionType</span><span class="o">.</span><span class="n">TILT_CAMERA</span>
+</span><span id="Action.set_tilt_cam-149"><a href="#Action.set_tilt_cam-149"><span class="linenos">149</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -686,6 +788,12 @@ litchi_wp<wbr>.action    </h1>
 
 <ul>
 <li><strong>deg (int | float):</strong>  Tiltangle in degrees</li>
+</ul>
+
+<h6 id="raises">Raises:</h6>
+
+<ul>
+<li><strong>ValueError:</strong>  If deg cannot be float or deg &lt; -90 or deg &gt; 30</li>
 </ul>
 </div>
 
